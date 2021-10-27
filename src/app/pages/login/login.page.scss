@@ -1,0 +1,17 @@
+ion-slides {
+  height: 100%;
+  .slide-inner{
+    width: 70%;
+    background-color: rgb(143, 143, 145);
+    border-radius: 16px;
+  }
+  .ion-margin-top {
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+  ion-item {
+    padding: 5px;
+    border-radius: 16px;
+  }
+}
+
