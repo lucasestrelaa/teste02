@@ -1,32 +1,30 @@
-
-
-<ion-content >
+<ion-content>
   <ion-slides>
     <ion-slide>
       <div class="slide-inner ion-padding">
-        <h1>Login</h1>  
+        <h1>Login</h1>
         <ion-item class="ion-margin-top">
-          <ion-input type="email" placeholder="E-mail"></ion-input>
+          <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="password" placeholder="Senha"></ion-input>
+          <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
         </ion-item>
-        <ion-button>Login</ion-button>
+        <ion-button (click)="login()">Login</ion-button>
       </div>
     </ion-slide>
     <ion-slide>
       <div class="slide-inner ion-padding">
         <h2>Registrar</h2>
         <ion-item>
-          <ion-input type="nome" placeholder="Nome"></ion-input>
+          <ion-input type="nome" placeholder="Nome" [(ngModel)]="userRegister.name"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="email" placeholder="E-mail"></ion-input>
+          <ion-input type="email" placeholder="E-mail" [(ngModel)]="userRegister.email"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="password" placeholder="Senha"></ion-input>
+          <ion-input type="password" placeholder="Senha" [(ngModel)]="userRegister.password"></ion-input>
         </ion-item>
-        <ion-button>Registrar</ion-button>
+        <ion-button (click)="register()">Registrar</ion-button>
       </div>
     </ion-slide>
   </ion-slides>
