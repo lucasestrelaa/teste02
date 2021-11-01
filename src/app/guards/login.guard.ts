@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, Router } from '@angular/router';
+
+
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
@@ -16,7 +17,7 @@ export class LoginGuard implements CanActivate {
       this.authService.getAuth().onAuthStateChanged(user => {
         if (user) this.router.navigate(['tabs']);
 
-        resolve(user ? true : false);
+        resolve(!user ? true : false);
       });
     });
   }
