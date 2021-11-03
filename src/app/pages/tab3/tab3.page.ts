@@ -30,7 +30,7 @@ export class Tab3Page {
     } catch (error) {
       console.log(error)
     } finally {
-      this.loading.dismiss();
+      //this.loading.;
     }
   }
 

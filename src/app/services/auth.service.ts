@@ -19,18 +19,26 @@ export class AuthService {
   ) { }
 
   login(user: User) {
-    this.afa.createUserWithEmailAndPassword(user.email, user.password);
+    this.afa.signInWithEmailAndPassword(user.email, user.password);
   }
   register(user: User) {
-    return this.afa.createUserWithEmailAndPassword(user.email, user.password)
+    return this.afa.createUserWithEmailAndPassword(user.email, user.password);
   }
   logout() {
+    this.getAuth();
     return this.afa.signOut().then(() => {
+
       this.route.navigate(['login']);
+    }).catch(error => {
+      console.log(error + '->erro');
     });
+
   }
+
   getAuth() {
+    console.log(this.afa);
     return this.afa;
+
   }
 
 }
