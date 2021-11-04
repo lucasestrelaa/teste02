@@ -14,6 +14,18 @@ const routes: Routes = [
   {
     path: 'adm',
     component: AdmPage
+  },
+  {
+    path: 'listmedicos',
+    loadChildren: () => import('./pages/listmedicos/listmedicos.module').then(m => m.ListmedicosPageModule)
+  },
+  {
+    path: 'medico',
+    loadChildren: () => import('./pages/medico/medico.module').then(m => m.MedicoPageModule)
+  },
+  {
+    path: 'medico/:id',
+    loadChildren: () => import('./pages/medico/medico.module').then(m => m.MedicoPageModule)
   }
 
 ];

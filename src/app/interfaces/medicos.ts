@@ -6,8 +6,8 @@ export interface Medicos {
     crm?: string,
     telefone?: string,
     celular?: string,
-    uf?: number,
-    especialidade?: number,
+    uf?: string,
+    especialidade?: string,
     observacoes?: string,
 
 }
