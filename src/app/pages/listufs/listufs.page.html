@@ -3,12 +3,12 @@
         <ion-buttons (click)="voltar()" slot="start">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </ion-buttons>
-        <ion-title>listmedicos</ion-title>
+        <ion-title>listufs</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-list *ngIf="!medicos.length">
+    <ion-list *ngIf="!ufs.length">
         <ion-item *ngFor="let item of [0, 1, 2]">
             <ion-avatar slot="start">
                 <ion-skeleton-text animated></ion-skeleton-text>
@@ -27,23 +27,23 @@
         </ion-item>
     </ion-list>
     <ion-list>
-        <ion-item-sliding *ngFor="let medico of medicos">
-            <ion-item button [routerLink]="['/medico', medico.id]">
+        <ion-item-sliding *ngFor="let uf of ufs">
+            <ion-item button [routerLink]="['/uf', uf.id]">
                 <!--<ion-avatar slot="start">
-          <img [src]="medico.picture">
-        </ion-avatar>-->
+    <img [src]="medico.picture">
+  </ion-avatar>-->
 
                 <ion-label>
-                    {{ medico.nome }}
-                    <p>{{ medico.especialidade }}</p>
-                    <p>{{ medico.uf }}</p>
+                    {{ uf.nome }}
+                    <!-- <p>{{ uf.endereco }}</p>
+                <p>{{ uf.uf }}</p> -->
                 </ion-label>
 
-                <ion-note color="primary" slot="end" *ngIf="medico.telefone">{{ medico.telefone }}</ion-note>
+                <!-- <ion-note color="primary" slot="end" *ngIf="uf.telefone">{{ uf.telefone }}</ion-note> -->
             </ion-item>
 
             <ion-item-options side="end">
-                <ion-item-option color="danger" (click)="deleteMedico(medico.id)">
+                <ion-item-option color="danger" (click)="deleteUf(uf.id)">
                     <ion-icon slot="top" name="trash"></ion-icon>
                     Excluir
                 </ion-item-option>
@@ -59,8 +59,8 @@
 
 
                 <ion-col size="12">
-                    <ion-button href="/medico" expand="block">
-                        Add produto
+                    <ion-button href="/uf" expand="block">
+                        Add uf
                     </ion-button>
                 </ion-col>
             </ion-row>

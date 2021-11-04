@@ -1,5 +1,5 @@
 export interface ClinicaMedico {
-    id?: string,
+    //id?: string,
     idClinica?: string,
     idMedico?: string,
 }

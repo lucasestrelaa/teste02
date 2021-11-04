@@ -1,5 +1,5 @@
 export interface Medicos {
-    id?: string,
+    //id?: string,
     nome?: string,
     cpf?: string,
     endereco?: string,

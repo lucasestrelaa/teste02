@@ -2,55 +2,54 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { Medicos } from 'src/app/interfaces/medicos';
+import { Clinicas } from 'src/app/interfaces/clinicas';
 import { AuthService } from 'src/app/services/auth.service';
-import { MedicosService } from 'src/app/services/medicos.service';
+import { ClinicasService } from 'src/app/services/clinicas.service';
 
 @Component({
-  selector: 'app-medico',
-  templateUrl: './medico.page.html',
-  styleUrls: ['./medico.page.scss'],
+  selector: 'app-clinica',
+  templateUrl: './clinica.page.html',
+  styleUrls: ['./clinica.page.scss'],
 })
-export class MedicoPage implements OnInit {
-  private medicoId: string = null;
-  public medico: Medicos = {};
+export class ClinicaPage implements OnInit {
+  private clinicaId: string = null;
+  public clinica: Clinicas = {};
   private loading: any;
-  private medicoSubscription: Subscription;
-  constructor(
-    private medicoService: MedicosService,
+  private clinicaSubscription: Subscription;
+  constructor(private clinicaService: ClinicasService,
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private authService: AuthService,
     private toastCtrl: ToastController
-  ) {
-    this.medicoId = this.activatedRoute.snapshot.params['id'];
+    ) { 
+      this.clinicaId = this.activatedRoute.snapshot.params['id'];
     
 
-    if (this.medicoId) this.loadMedico();
-  }
+    if (this.clinicaId) this.loadClinica();
+    }
 
   ngOnInit() {
   }
-  loadMedico() {
-    console.log("teste"+this.medicoId);
-    this.medicoSubscription = this.medicoService.getMedico(this.medicoId).subscribe(data => {
-      this.medico = data;
+  loadClinica() {
+    console.log("teste"+this.clinicaId);
+    this.clinicaSubscription = this.clinicaService.getClinica(this.clinicaId).subscribe(data => {
+      this.clinica = data;
       //console.log(data + "Medico data")
     });
   }
-  async saveMedico() {
+  async saveClinica() {
     await this.presentLoading();
 
     //this.medico.id = (await this.authService.getAuth().currentUser).uid;
 
-    if (this.medicoId) {
+    if (this.clinicaId) {
       try {
-        await this.medicoService.updateMedico(this.medicoId, this.medico);
+        await this.clinicaService.updateClinica(this.clinicaId, this.clinica);
         await this.loading.dismiss();
 
-        this.navCtrl.navigateBack('/listmedicos');
+        this.navCtrl.navigateBack('/listclinicas');
       } catch (error) {
         this.presentToast('Erro ao tentar salvar');
         this.loading.dismiss();
@@ -60,21 +59,19 @@ export class MedicoPage implements OnInit {
 
       try {
         
-        await this.medicoService.addMedico(this.medico);
+        await this.clinicaService.addClinica(this.clinica);
         await this.loading.dismiss();
 
-        this.navCtrl.navigateBack('/listmedicos');
+        this.navCtrl.navigateBack('/listclinicas');
       } catch (error) {
         this.presentToast('Erro ao tentar salvar');
         this.loading.dismiss();
       }
     }
   }
-
   voltar(){
     this.route.navigate(['/adm']);
   }
-
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
     return this.loading.present();
@@ -84,5 +81,6 @@ export class MedicoPage implements OnInit {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
+
 
 }

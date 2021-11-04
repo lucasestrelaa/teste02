@@ -2,55 +2,55 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { Medicos } from 'src/app/interfaces/medicos';
+import { Especialidades } from 'src/app/interfaces/especialidades';
 import { AuthService } from 'src/app/services/auth.service';
-import { MedicosService } from 'src/app/services/medicos.service';
+import { EspecialidadeService } from 'src/app/services/especialidade.service';
 
 @Component({
-  selector: 'app-medico',
-  templateUrl: './medico.page.html',
-  styleUrls: ['./medico.page.scss'],
+  selector: 'app-especialidade',
+  templateUrl: './especialidade.page.html',
+  styleUrls: ['./especialidade.page.scss'],
 })
-export class MedicoPage implements OnInit {
-  private medicoId: string = null;
-  public medico: Medicos = {};
+export class EspecialidadePage implements OnInit {
+  private especialidadeId: string = null;
+  public especialidade: Especialidades = {};
   private loading: any;
-  private medicoSubscription: Subscription;
+  private especialidadeSubscription: Subscription;
   constructor(
-    private medicoService: MedicosService,
+    private especialidadeService: EspecialidadeService,
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private authService: AuthService,
     private toastCtrl: ToastController
-  ) {
-    this.medicoId = this.activatedRoute.snapshot.params['id'];
+  ) { 
+    this.especialidadeId = this.activatedRoute.snapshot.params['id'];
     
 
-    if (this.medicoId) this.loadMedico();
+    if (this.especialidadeId) this.loadEspecialidade();
   }
 
   ngOnInit() {
   }
-  loadMedico() {
-    console.log("teste"+this.medicoId);
-    this.medicoSubscription = this.medicoService.getMedico(this.medicoId).subscribe(data => {
-      this.medico = data;
+  loadEspecialidade() {
+    console.log("teste"+this.especialidadeId);
+    this.especialidadeSubscription = this.especialidadeService.getEspecialidade(this.especialidadeId).subscribe(data => {
+      this.especialidade = data;
       //console.log(data + "Medico data")
     });
   }
-  async saveMedico() {
+  async saveEspecialidade() {
     await this.presentLoading();
 
     //this.medico.id = (await this.authService.getAuth().currentUser).uid;
 
-    if (this.medicoId) {
+    if (this.especialidadeId) {
       try {
-        await this.medicoService.updateMedico(this.medicoId, this.medico);
+        await this.especialidadeService.updateEspecialidade(this.especialidadeId, this.especialidade);
         await this.loading.dismiss();
 
-        this.navCtrl.navigateBack('/listmedicos');
+        this.navCtrl.navigateBack('/listespecialidades');
       } catch (error) {
         this.presentToast('Erro ao tentar salvar');
         this.loading.dismiss();
@@ -60,21 +60,19 @@ export class MedicoPage implements OnInit {
 
       try {
         
-        await this.medicoService.addMedico(this.medico);
+        await this.especialidadeService.addEspecialidade(this.especialidade);
         await this.loading.dismiss();
 
-        this.navCtrl.navigateBack('/listmedicos');
+        this.navCtrl.navigateBack('/listespecialidades');
       } catch (error) {
         this.presentToast('Erro ao tentar salvar');
         this.loading.dismiss();
       }
     }
   }
-
   voltar(){
-    this.route.navigate(['/adm']);
+    this.route.navigate(['/listespecialidades']);
   }
-
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
     return this.loading.present();

@@ -2,45 +2,43 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { Medicos } from 'src/app/interfaces/medicos';
+import { Especialidades } from 'src/app/interfaces/especialidades';
 import { AuthService } from 'src/app/services/auth.service';
-import { MedicosService } from 'src/app/services/medicos.service';
+import { EspecialidadeService } from 'src/app/services/especialidade.service';
 
 @Component({
-  selector: 'app-listmedicos',
-  templateUrl: './listmedicos.page.html',
-  styleUrls: ['./listmedicos.page.scss'],
+  selector: 'app-listespecialidades',
+  templateUrl: './listespecialidades.page.html',
+  styleUrls: ['./listespecialidades.page.scss'],
 })
-export class ListmedicosPage implements OnInit {
+export class ListespecialidadesPage implements OnInit {
   private loading: any;
-  public medicos = new Array<Medicos>();
-  private medicosSubscription: Subscription;
+  public especialidades = new Array<Especialidades>();
+  private especialidadesSubscription: Subscription;
   constructor(
     private authService: AuthService,
     private route: Router,
     private loadingCtrl: LoadingController,
-    private medicoService: MedicosService,
+    private especialidadeService: EspecialidadeService,
     private toastCtrl: ToastController
-  ) {
-    this.medicosSubscription = this.medicoService.getMedicos().subscribe(data => {
-      this.medicos = data;
+  ) { 
+    this.especialidadesSubscription = this.especialidadeService.getEspecialidades().subscribe(data => {
+      this.especialidades = data;
     });
   }
 
   ngOnInit() {
   }
   ngOnDestroy() {
-    this.medicosSubscription.unsubscribe();
+    this.especialidadesSubscription.unsubscribe();
   }
-
-  async deleteMedico(id: string) {
+  async deleteEspecialidade(id: string) {
     try {
-      await this.medicoService.deleteMedico(id);
+      await this.especialidadeService.deleteEspecialidade(id);
     } catch (error) {
       this.presentToast('Erro ao tentar deletar');
     }
   }
-
   voltar(){
     this.route.navigate(['/adm']);
   }

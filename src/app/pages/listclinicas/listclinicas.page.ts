@@ -2,40 +2,41 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { Medicos } from 'src/app/interfaces/medicos';
+import { Clinicas } from 'src/app/interfaces/clinicas';
 import { AuthService } from 'src/app/services/auth.service';
+import { ClinicasService } from 'src/app/services/clinicas.service';
 import { MedicosService } from 'src/app/services/medicos.service';
 
 @Component({
-  selector: 'app-listmedicos',
-  templateUrl: './listmedicos.page.html',
-  styleUrls: ['./listmedicos.page.scss'],
+  selector: 'app-listclinicas',
+  templateUrl: './listclinicas.page.html',
+  styleUrls: ['./listclinicas.page.scss'],
 })
-export class ListmedicosPage implements OnInit {
+export class ListclinicasPage implements OnInit {
   private loading: any;
-  public medicos = new Array<Medicos>();
-  private medicosSubscription: Subscription;
+  public clinicas = new Array<Clinicas>();
+  private clinicasSubscription: Subscription;
   constructor(
     private authService: AuthService,
     private route: Router,
     private loadingCtrl: LoadingController,
-    private medicoService: MedicosService,
+    private clinicaService: ClinicasService,
     private toastCtrl: ToastController
   ) {
-    this.medicosSubscription = this.medicoService.getMedicos().subscribe(data => {
-      this.medicos = data;
+    this.clinicasSubscription = this.clinicaService.getClinicas().subscribe(data => {
+      this.clinicas = data;
     });
-  }
+   }
 
   ngOnInit() {
   }
   ngOnDestroy() {
-    this.medicosSubscription.unsubscribe();
+    this.clinicasSubscription.unsubscribe();
   }
 
-  async deleteMedico(id: string) {
+  async deleteClinica(id: string) {
     try {
-      await this.medicoService.deleteMedico(id);
+      await this.clinicaService.deleteClinica(id);
     } catch (error) {
       this.presentToast('Erro ao tentar deletar');
     }

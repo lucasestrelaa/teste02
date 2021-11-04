@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators';
 export class MedicosService {
 
   private medicosCollection: AngularFirestoreCollection<Medicos>;
+  public medico: Medicos = {};
+  public medicos: Medicos = {};
 
   constructor(private afs: AngularFirestore) {
     this.medicosCollection = this.afs.collection<Medicos>('Medicos');

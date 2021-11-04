@@ -2,45 +2,43 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { Medicos } from 'src/app/interfaces/medicos';
+import { Uf } from 'src/app/interfaces/uf';
 import { AuthService } from 'src/app/services/auth.service';
-import { MedicosService } from 'src/app/services/medicos.service';
+import { UfService } from 'src/app/services/uf.service';
 
 @Component({
-  selector: 'app-listmedicos',
-  templateUrl: './listmedicos.page.html',
-  styleUrls: ['./listmedicos.page.scss'],
+  selector: 'app-listufs',
+  templateUrl: './listufs.page.html',
+  styleUrls: ['./listufs.page.scss'],
 })
-export class ListmedicosPage implements OnInit {
+export class ListufsPage implements OnInit {
   private loading: any;
-  public medicos = new Array<Medicos>();
-  private medicosSubscription: Subscription;
+  public ufs = new Array<Uf>();
+  private ufsSubscription: Subscription;
   constructor(
     private authService: AuthService,
     private route: Router,
     private loadingCtrl: LoadingController,
-    private medicoService: MedicosService,
+    private ufService: UfService,
     private toastCtrl: ToastController
-  ) {
-    this.medicosSubscription = this.medicoService.getMedicos().subscribe(data => {
-      this.medicos = data;
+  ) { 
+    this.ufsSubscription = this.ufService.getUfs().subscribe(data => {
+      this.ufs = data;
     });
   }
 
   ngOnInit() {
   }
   ngOnDestroy() {
-    this.medicosSubscription.unsubscribe();
+    this.ufsSubscription.unsubscribe();
   }
-
-  async deleteMedico(id: string) {
+  async deleteUf(id: string) {
     try {
-      await this.medicoService.deleteMedico(id);
+      await this.ufService.deleteUf(id);
     } catch (error) {
       this.presentToast('Erro ao tentar deletar');
     }
   }
-
   voltar(){
     this.route.navigate(['/adm']);
   }

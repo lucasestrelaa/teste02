@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons (click)="voltar()" slot="start">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-buttons>
+        <ion-title>especialidade</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-list>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="especialidade.nome" placeholder="Nome"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="especialidade.descricao" placeholder="Descrição"></ion-input>
+        </ion-item>
+        <!-- <ion-item>
+            <ion-input type="text" [(ngModel)]="especialidade.endereco" placeholder="Endereço"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="especialidade.cep" placeholder="CEP"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="especialidade.responsavel" placeholder="Responsável"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="especialidade.uf" placeholder="UF"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="especialidade.telefone1" placeholder="Telefone 1"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="especialidade.telefone2" placeholder="Telefone 2"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="especialidade.telefone3" placeholder="Telefone 3"></ion-input>
+        </ion-item> -->
+        <!-- <ion-item>
+            <ion-input type="text" [(ngModel)]="especialidade.observacoes" placeholder="Observações"></ion-input>
+        </ion-item> -->
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button (click)="saveEspecialidade()" expand="block">
+            Salvar especialidade
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

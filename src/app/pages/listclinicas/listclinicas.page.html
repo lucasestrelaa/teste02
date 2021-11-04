@@ -3,12 +3,12 @@
         <ion-buttons (click)="voltar()" slot="start">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </ion-buttons>
-        <ion-title>listmedicos</ion-title>
+        <ion-title>listclinica</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-list *ngIf="!medicos.length">
+    <ion-list *ngIf="!clinicas.length">
         <ion-item *ngFor="let item of [0, 1, 2]">
             <ion-avatar slot="start">
                 <ion-skeleton-text animated></ion-skeleton-text>
@@ -27,23 +27,23 @@
         </ion-item>
     </ion-list>
     <ion-list>
-        <ion-item-sliding *ngFor="let medico of medicos">
-            <ion-item button [routerLink]="['/medico', medico.id]">
+        <ion-item-sliding *ngFor="let clinica of clinicas">
+            <ion-item button [routerLink]="['/clinica', clinica.id]">
                 <!--<ion-avatar slot="start">
-          <img [src]="medico.picture">
-        </ion-avatar>-->
+        <img [src]="medico.picture">
+      </ion-avatar>-->
 
                 <ion-label>
-                    {{ medico.nome }}
-                    <p>{{ medico.especialidade }}</p>
-                    <p>{{ medico.uf }}</p>
+                    {{ clinica.nomeFantasia }}
+                    <p>{{ clinica.endereco }}</p>
+                    <p>{{ clinica.uf }}</p>
                 </ion-label>
 
-                <ion-note color="primary" slot="end" *ngIf="medico.telefone">{{ medico.telefone }}</ion-note>
+                <ion-note color="primary" slot="end" *ngIf="clinica.telefone">{{ clinica.telefone }}</ion-note>
             </ion-item>
 
             <ion-item-options side="end">
-                <ion-item-option color="danger" (click)="deleteMedico(medico.id)">
+                <ion-item-option color="danger" (click)="deleteClinica(clinica.id)">
                     <ion-icon slot="top" name="trash"></ion-icon>
                     Excluir
                 </ion-item-option>
@@ -59,8 +59,8 @@
 
 
                 <ion-col size="12">
-                    <ion-button href="/medico" expand="block">
-                        Add produto
+                    <ion-button href="/clinica" expand="block">
+                        Add Clinica
                     </ion-button>
                 </ion-col>
             </ion-row>
