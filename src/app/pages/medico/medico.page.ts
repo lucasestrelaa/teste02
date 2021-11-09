@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { Especialidades } from 'src/app/interfaces/especialidades';
 import { Medicos } from 'src/app/interfaces/medicos';
+import { Uf } from 'src/app/interfaces/uf';
 import { AuthService } from 'src/app/services/auth.service';
+import { EspecialidadeService } from 'src/app/services/especialidade.service';
 import { MedicosService } from 'src/app/services/medicos.service';
+import { UfService } from 'src/app/services/uf.service';
 
 @Component({
   selector: 'app-medico',
@@ -14,10 +18,18 @@ import { MedicosService } from 'src/app/services/medicos.service';
 export class MedicoPage implements OnInit {
   private medicoId: string = null;
   public medico: Medicos = {};
+
+  public ufs = new Array<Uf>();
+  private UfSubscription: Subscription;
+  public especialidades = new Array<Especialidades>();
+  private EspecialidadesSubscription: Subscription;
+
   private loading: any;
   private medicoSubscription: Subscription;
   constructor(
     private medicoService: MedicosService,
+    private ufService: UfService,
+    private especialidadeService: EspecialidadeService,
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private navCtrl: NavController,
@@ -26,9 +38,16 @@ export class MedicoPage implements OnInit {
     private toastCtrl: ToastController
   ) {
     this.medicoId = this.activatedRoute.snapshot.params['id'];
+    this.UfSubscription = this.ufService.getUfs().subscribe(data => {
+      this.ufs = data;
+    });
+    this.EspecialidadesSubscription = this.especialidadeService.getEspecialidades().subscribe(data => {
+      this.especialidades = data;
+    });
     
 
     if (this.medicoId) this.loadMedico();
+
   }
 
   ngOnInit() {

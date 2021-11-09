@@ -26,12 +26,20 @@
         <ion-item>
             <ion-input type="text" [(ngModel)]="medico.celular" placeholder="Celular"></ion-input>
         </ion-item>
-        <ion-item>
+        <!-- <ion-item>
             <ion-input type="text" [(ngModel)]="medico.uf" placeholder="UF"></ion-input>
-        </ion-item>
-        <ion-item>
+        </ion-item> -->
+        <ion-label>Cidade</ion-label>
+        <ion-select [(ngModel)]="medico.uf">
+            <ion-select-option *ngFor="let uf of ufs" value="{{uf.id}}">{{ uf.nome }}</ion-select-option>
+        </ion-select>
+        <ion-label>Especialidade</ion-label>
+        <ion-select [(ngModel)]="medico.especialidade">
+            <ion-select-option *ngFor="let especialidade of especialidades" value="{{especialidade.id}}">{{ especialidade.nome }}</ion-select-option>
+        </ion-select>
+        <!-- <ion-item>
             <ion-input type="text" [(ngModel)]="medico.especialidade" placeholder="Especialidede"></ion-input>
-        </ion-item>
+        </ion-item> -->
         <ion-item>
             <ion-input type="text" [(ngModel)]="medico.observacoes" placeholder="Observações"></ion-input>
         </ion-item>

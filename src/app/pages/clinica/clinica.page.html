@@ -24,9 +24,13 @@
         <ion-item>
             <ion-input type="text" [(ngModel)]="clinica.responsavel" placeholder="Responsável"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-label>Cidade</ion-label>
+        <ion-select [(ngModel)]="clinica.uf">
+            <ion-select-option *ngFor="let uf of ufs" value="{{uf.id}}">{{ uf.nome }}</ion-select-option>
+        </ion-select>
+        <!-- <ion-item>
             <ion-input type="text" [(ngModel)]="clinica.uf" placeholder="UF"></ion-input>
-        </ion-item>
+        </ion-item> -->
         <ion-item>
             <ion-input type="text" [(ngModel)]="clinica.telefone1" placeholder="Telefone 1"></ion-input>
         </ion-item>

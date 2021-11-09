@@ -3,8 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Clinicas } from 'src/app/interfaces/clinicas';
+import { Uf } from 'src/app/interfaces/uf';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClinicasService } from 'src/app/services/clinicas.service';
+import { UfService } from 'src/app/services/uf.service';
 
 @Component({
   selector: 'app-clinica',
@@ -14,9 +16,14 @@ import { ClinicasService } from 'src/app/services/clinicas.service';
 export class ClinicaPage implements OnInit {
   private clinicaId: string = null;
   public clinica: Clinicas = {};
+
+  public ufs = new Array<Uf>();
+  private UfSubscription: Subscription;
+
   private loading: any;
   private clinicaSubscription: Subscription;
   constructor(private clinicaService: ClinicasService,
+    private ufService: UfService,
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private navCtrl: NavController,
@@ -25,6 +32,9 @@ export class ClinicaPage implements OnInit {
     private toastCtrl: ToastController
     ) { 
       this.clinicaId = this.activatedRoute.snapshot.params['id'];
+      this.UfSubscription = this.ufService.getUfs().subscribe(data => {
+        this.ufs = data;
+      });
     
 
     if (this.clinicaId) this.loadClinica();
