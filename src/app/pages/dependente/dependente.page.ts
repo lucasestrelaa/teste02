@@ -110,7 +110,7 @@ export class DependentePage implements OnInit {
     //this.user.id = (await this.authService.getAuth().currentUser).uid;
     //console.log((await this.authService.getAuth().currentUser).email);
     //console.log(this.usuarios.id+" asnfogunasfognaosignosmgasdg")
-    if (this.dependentes.id) {
+    if (this.dependentes.id ) {
       //console.log(this.usuarios + " 1234");
       //console.log(this.Iduser + " 1234")
       try {
