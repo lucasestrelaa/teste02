@@ -80,7 +80,7 @@ export class ClinicaPage implements OnInit {
     }
   }
   voltar(){
-    this.route.navigate(['/adm']);
+    this.route.navigate(['/listclinicas']);
   }
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });

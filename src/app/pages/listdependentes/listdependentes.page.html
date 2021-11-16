@@ -1,50 +1,9 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>listdependentes</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>listdependentes</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-list *ngIf="!dependentes.length">
-        <ion-item *ngFor="let item of [0, 1, 2]">
-            <ion-avatar slot="start">
-                <ion-skeleton-text animated></ion-skeleton-text>
-            </ion-avatar>
-            <ion-label>
-                <h3>
-                    <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-                </h3>
-                <p>
-                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-                </p>
-                <p>
-                    <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-                </p>
-            </ion-label>
-        </ion-item>
-    </ion-list>
-    <ion-list>
-        <ion-item-sliding *ngFor="let dependente of dependentes">
-            <ion-item button [routerLink]="['/dependente', dependente.id]">
-                <!--<ion-avatar slot="start">
-  <img [src]="medico.picture">
-</ion-avatar>-->
 
-                <ion-label>
-                    {{ dependente.nome }}
-                    <!-- <p>{{ dependente.endereco }}</p>
-              <p>{{ dependente.uf }}</p> -->
-                </ion-label>
-
-                <!-- <ion-note color="primary" slot="end" *ngIf="dependente.telefone">{{ dependente.telefone }}</ion-note> -->
-            </ion-item>
-
-            <ion-item-options side="end">
-                <ion-item-option color="danger" (click)="deleteDependente(dependente.id)">
-                    <ion-icon slot="top" name="trash"></ion-icon>
-                    Excluir
-                </ion-item-option>
-            </ion-item-options>
-        </ion-item-sliding>
-    </ion-list>
 </ion-content>

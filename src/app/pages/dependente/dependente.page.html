@@ -1,90 +1,9 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title>
-            Dependente
-        </ion-title>
-    </ion-toolbar>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>dependente</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-
-
-    <ion-list>
-        <ion-item>
-            <ion-label>
-                Nomee
-            </ion-label>
-            <ion-input type="text" placeholder="Nome" [(ngModel)]="dependentes.nome"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>
-                email
-            </ion-label>
-            <ion-input type="text" placeholder="email" [(ngModel)]="dependentes.email"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>
-                RG
-            </ion-label>
-            <ion-input type="text" placeholder="RG" [(ngModel)]="dependentes.rg"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>
-                CPF
-            </ion-label>
-            <ion-input type="text" placeholder="CPF" [(ngModel)]="dependentes.cpf"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>
-                Órgão emissor
-            </ion-label>
-            <ion-input type="text" placeholder="Órgão emissor"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>
-                Data da emissão
-            </ion-label>
-            <ion-input type="date" placeholder="data da emissão" [(ngModel)]="dependentes.dtemissao"></ion-input>
-        </ion-item>
-        <ion-label>Cidade</ion-label>
-        <ion-select [(ngModel)]="dependentes.uf">
-            <ion-select-option *ngFor="let uf of ufs" value="{{uf.id}}">{{ uf.nome }}</ion-select-option>
-        </ion-select>
-        <!--<ion-item>
-      <ion-label>
-        UF
-      </ion-label>
-      <ion-input type="UF" placeholder="UF"></ion-input>
-    </ion-item>-->
-        <ion-item>
-            <ion-label>
-                Data de nascimento
-            </ion-label>
-            <ion-input type="date" placeholder="data de nascimento" [(ngModel)]="dependentes.dtnascimento"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>
-                Título de eleitor
-            </ion-label>
-            <ion-input type="text" placeholder="Título de eleitor" [(ngModel)]="dependentes.tituloeleitor"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>
-                Titular
-            </ion-label>
-            <ion-input type="text" placeholder="Titular" [(ngModel)]="usuarios.nome" readonly></ion-input>
-        </ion-item>
-    </ion-list>
+<ion-content>
 
 </ion-content>
-<ion-footer>
-    <ion-toolbar>
-        <ion-grid>
-            <ion-row>
-                <ion-col size="12">
-                    <ion-button expand="block" (click)="salvarDependente()">Salvar Dependente</ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </ion-toolbar>
-</ion-footer>

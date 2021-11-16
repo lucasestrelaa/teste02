@@ -61,6 +61,18 @@ const routes: Routes = [
   {
     path: 'listorgaosemissores',
     loadChildren: () => import('./pages/listorgaosemissores/listorgaosemissores.module').then( m => m.ListorgaosemissoresPageModule)
+  },
+  {
+    path: 'dependente',
+    loadChildren: () => import('./pages/dependente/dependente.module').then( m => m.DependentePageModule)
+  },
+  {
+    path: 'dependente/:id',
+    loadChildren: () => import('./pages/dependente/dependente.module').then( m => m.DependentePageModule)
+  },
+  {
+    path: 'listdependentes',
+    loadChildren: () => import('./pages/listdependentes/listdependentes.module').then( m => m.ListdependentesPageModule)
   }
 
 ];
