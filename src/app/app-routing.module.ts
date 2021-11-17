@@ -59,6 +59,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/orgaoemissor/orgaoemissor.module').then( m => m.OrgaoemissorPageModule)
   },
   {
+    path: 'orgaoemissor/:id',
+    loadChildren: () => import('./pages/orgaoemissor/orgaoemissor.module').then( m => m.OrgaoemissorPageModule)
+  },
+  {
     path: 'listorgaosemissores',
     loadChildren: () => import('./pages/listorgaosemissores/listorgaosemissores.module').then( m => m.ListorgaosemissoresPageModule)
   },
@@ -73,6 +77,14 @@ const routes: Routes = [
   {
     path: 'listdependentes',
     loadChildren: () => import('./pages/listdependentes/listdependentes.module').then( m => m.ListdependentesPageModule)
+  },
+  {
+    path: 'consulta',
+    loadChildren: () => import('./pages/consulta/consulta.module').then( m => m.ConsultaPageModule)
+  },
+  {
+    path: 'listconsultas',
+    loadChildren: () => import('./pages/listconsultas/listconsultas.module').then( m => m.ListconsultasPageModule)
   }
 
 ];

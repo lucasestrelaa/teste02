@@ -1,9 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>orgaoemissor</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons (click)="voltar()" slot="start">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-buttons>
+        <ion-title>Órgão Emissor</ion-title>
+    </ion-toolbar>
 </ion-header>
+<ion-content class="ion-padding">
+    <ion-list>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="orgaoemissor.nome" placeholder="Nome"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="orgaoemissor.descricao" placeholder="Descrição"></ion-input>
+        </ion-item>
 
-<ion-content>
-
+    </ion-list>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button (click)="saveOrgaoemissor()" expand="block">
+            Salvar Órgão Emissor
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>
