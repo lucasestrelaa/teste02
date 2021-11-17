@@ -15,9 +15,10 @@ ion-title {
     color: #000;
     text-align: center;
     width: 80%;
-    height: 80%;
-    ion-card-item {
+    height: auto;
+    ion-card-content {
         padding: 10px;
+        font-size: 11px;
     }
     ion-icon {
         width: 100%;

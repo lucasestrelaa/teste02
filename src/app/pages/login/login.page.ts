@@ -21,6 +21,7 @@ export class LoginPage implements OnInit {
     private toastCtrl: ToastController,
     private authService: AuthService,
     private route: Router,
+    
   ) { }
 
   ngOnInit() {
@@ -52,8 +53,10 @@ export class LoginPage implements OnInit {
     }
   }
   async presentLoading() {
-    this.loading = await this.loadingCtrl.create({ message: 'Autenticando...', duration: 2000 });
+    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    return this.loading.present();
   }
+
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
