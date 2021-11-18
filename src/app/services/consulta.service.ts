@@ -26,6 +26,7 @@ export class ConsultaService {
     );
   }
   addConsulta(consulta: Consulta) {
+    alert("salvou consulta")
     return this.consultasCollection.add(consulta);
   }
   getConsulta(id: string) {

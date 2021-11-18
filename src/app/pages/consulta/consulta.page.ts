@@ -9,6 +9,7 @@ import { Medicos } from 'src/app/interfaces/medicos';
 import { Uf } from 'src/app/interfaces/uf';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClinicasService } from 'src/app/services/clinicas.service';
+import { ConsultaService } from 'src/app/services/consulta.service';
 import { DependentesService } from 'src/app/services/dependentes.service';
 import { EspecialidadeService } from 'src/app/services/especialidade.service';
 import { MedicosService } from 'src/app/services/medicos.service';
@@ -43,9 +44,9 @@ export class ConsultaPage implements OnInit {
   public especialidades = new Array<Especialidades>();
   private EspecialidadesSubscription: Subscription;
   //Consulta
-  
+
   //public especialidades = new Array<Especialidades>();
-  
+
 
   private loading: any;
   private medicoSubscription: Subscription;
@@ -61,19 +62,22 @@ export class ConsultaPage implements OnInit {
     //clinica
     private clinicaService: ClinicasService,
 
+    //consulta
+    private consultaService: ConsultaService,
 
     //Uf
     private ufService: UfService,
-    
-    
+
+
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private authService: AuthService,
     private toastCtrl: ToastController
-  ) { 
+  ) {
     this.consultaId = this.activatedRoute.snapshot.params['id'];
+
     //Paciente
     // this.PacienteSubscription = this.pacientesService.getPacientes().subscribe(data => {
     //   this.pacientes = data;
@@ -101,7 +105,7 @@ export class ConsultaPage implements OnInit {
     this.EspecialidadesSubscription = this.especialidadeService.getEspecialidades().subscribe(data => {
       this.especialidades = data;
     });
-    
+
 
     //if (this.consultaId) this.loadMedico();
   }
@@ -115,5 +119,45 @@ export class ConsultaPage implements OnInit {
   //medico
   //clinica
   //uf
+  async saveConsulta() {
+    await this.presentLoading();
+    alert(this.consulta.observacoes);
+    //this.medico.id = (await this.authService.getAuth().currentUser).uid;
+
+    if (this.consultaId) {
+      try {
+        await this.consultaService.updateConsulta(this.consultaId, this.consulta);
+        await this.loading.dismiss();
+
+        this.navCtrl.navigateBack('/listconsultas');
+      } catch (error) {
+        this.presentToast('Erro ao tentar salvar');
+        this.loading.dismiss();
+      }
+    } else {
+      //this.medico.createdAt = new Date().getTime();
+
+      try {
+
+        await this.consultaService.addConsulta(this.consulta);
+        await this.loading.dismiss();
+
+        this.navCtrl.navigateBack('/listconsultas');
+      } catch (error) {
+        this.presentToast('Erro ao tentar salvar');
+        this.loading.dismiss();
+      }
+    }
+
+  }
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    return this.loading.present();
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({ message, duration: 2000 });
+    toast.present();
+  }
 
 }
