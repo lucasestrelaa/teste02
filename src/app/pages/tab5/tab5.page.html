@@ -1,64 +1,70 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Perfil
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Perfil
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
 
-  <ion-list>
-    <ion-button expand="block">Dependentes</ion-button>
-    <ion-item>
-      <ion-label>
-        Usuário
-      </ion-label>
-      <ion-input type="text" placeholder="Nome"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        RG
-      </ion-label>
-      <ion-input type="text" placeholder="RG"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        CPF
-      </ion-label>
-      <ion-input type="text" placeholder="CPF"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        Órgão emissor
-      </ion-label>
-      <ion-input type="text" placeholder="Órgão emissor"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        Data da emissão
-      </ion-label>
-      <ion-input type="data" placeholder="data da emissão"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        UF
-      </ion-label>
-      <ion-input type="UF" placeholder="UF"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        Data de nascimento
-      </ion-label>
-      <ion-input type="data" placeholder="data de nascimento"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        Título de eleitor
-      </ion-label>
-      <ion-input type="data" placeholder="Título de eleitor"></ion-input>
-    </ion-item>
-  </ion-list>
+    <ion-list>
+        <ion-button expand="block">Dependentes</ion-button>
+        <ion-item>
+            <ion-label>
+                Usuário
+            </ion-label>
+            <ion-input type="text" [(ngModel)]="usuario.name" placeholder="Nome"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                RG
+            </ion-label>
+            <ion-input type="text" [(ngModel)]="usuario.rg" placeholder="RG"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                CPF
+            </ion-label>
+            <ion-input type="text" [(ngModel)]="usuario.cpf" placeholder="CPF"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Órgão emissor
+            </ion-label>
+            <ion-input type="text" [(ngModel)]="usuario.orgaoemissor" placeholder="Órgão emissor"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Data da emissão
+            </ion-label>
+            <ion-input type="data" [(ngModel)]="usuario.dtemissao" placeholder="data da emissão"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                UF
+            </ion-label>
+            <ion-input type="UF" [(ngModel)]="usuario.uf" placeholder="UF"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Data de nascimento
+            </ion-label>
+            <ion-input type="data" [(ngModel)]="usuario.dtnascimento" placeholder="data de nascimento"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Título de eleitor
+            </ion-label>
+            <ion-input type="data" [(ngModel)]="usuario.tituloeleitor" placeholder="Título de eleitor"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Título de eleitor
+            </ion-label>
+            <ion-input type="data" [(ngModel)]="usuario.email" placeholder="email" readonly></ion-input>
+        </ion-item>
+    </ion-list>
 
 </ion-content>
