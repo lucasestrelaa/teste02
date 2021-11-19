@@ -8,7 +8,7 @@ import { User } from '../interfaces/user';
 })
 export class UsuarioService {
   private usuarioCollection: AngularFirestoreCollection<User>;
-  constructor(private afs: AngularFirestore) { 
+  constructor(private afs: AngularFirestore) {
     this.usuarioCollection = this.afs.collection<User>('Usuario');
   }
   getUsuarios() {
@@ -23,8 +23,10 @@ export class UsuarioService {
       })
     );
   }
-  addUsuario(usuario: User) {
-    return this.usuarioCollection.add(usuario);
+  addUsuario(id: string, usuario: User) {
+    return this.usuarioCollection.doc(id).set(usuario);
+    //('Usuarios').doc
+    this.usuarioCollection.add(usuario);
   }
   getUsuario(id: string) {
     return this.usuarioCollection.doc<User>(id).valueChanges();
@@ -33,4 +35,5 @@ export class UsuarioService {
   updateUsuario(id: string, usuario: User) {
     return this.usuarioCollection.doc<User>(id).update(usuario);
   }
+
 }
