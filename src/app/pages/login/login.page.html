@@ -1,31 +1,42 @@
-<ion-content>
-  <ion-slides>
-    <ion-slide>
-      <div class="slide-inner ion-padding">
-        <h1>Login</h1>
-        <ion-item class="ion-margin-top">
-          <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
-        </ion-item>
-        <ion-button (click)="login()">Login</ion-button>
-      </div>
-    </ion-slide>
-    <ion-slide>
-      <div class="slide-inner ion-padding">
-        <h2>Registrar</h2>
-        <ion-item>
-          <ion-input type="nome" placeholder="Nome" [(ngModel)]="userRegister.name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="email" placeholder="E-mail" [(ngModel)]="userRegister.email"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="password" placeholder="Senha" [(ngModel)]="userRegister.password"></ion-input>
-        </ion-item>
-        <ion-button (click)="register()">Registrar</ion-button>
-      </div>
-    </ion-slide>
-  </ion-slides>
+<ion-content class="swiper-no-swiping">
+    <div class="container top">
+        <ion-segment (ionChange)="segmentChanged($event)" mode="ios" value="login">
+            <ion-segment-button mode="ios" value="login">
+                <ion-label>Login</ion-label>
+            </ion-segment-button>
+            <ion-segment-button mode="ios" value="register">
+                <ion-label>Cadastro</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <ion-slides>
+        <ion-slide>
+            <div class="slide-inner ion-padding">
+                <h1>Login</h1>
+                <ion-item class="ion-margin-top">
+                    <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
+                </ion-item>
+                <ion-button (click)="login()">Login</ion-button>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="slide-inner ion-padding">
+                <h2>Registrar</h2>
+                <ion-item>
+                    <ion-input type="nome" placeholder="Nome" [(ngModel)]="userRegister.name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="email" placeholder="E-mail" [(ngModel)]="userRegister.email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="password" placeholder="Senha" [(ngModel)]="userRegister.password"></ion-input>
+                </ion-item>
+                <ion-button (click)="register()">Registrar</ion-button>
+            </div>
+        </ion-slide>
+    </ion-slides>
 </ion-content>

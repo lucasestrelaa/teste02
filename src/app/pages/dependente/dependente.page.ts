@@ -95,6 +95,9 @@ export class DependentePage implements OnInit {
     });
     //if (this.userId) this.loadUsuario();
   }
+  voltar(){
+    this.route.navigate(['/listdependentes']);
+  }
   async loadDependente() {
     console.log("teste" + this.dependenteId);
     this.dependenteSubscription = this.dependenteService.getDependente(this.dependenteId).subscribe(data => {

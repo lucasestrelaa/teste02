@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { IonSlides, LoadingController, ToastController } from '@ionic/angular';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -12,8 +12,13 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  @ViewChild(IonSlides) slides: IonSlides;
   public userLogin: User = {};
   public userRegister: User = {};
+
+  public wavesPosition: number = 0;
+  private wavesDifference: number = 100;
+
   public loading: any;
   constructor(
 
@@ -26,6 +31,17 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
+
+  segmentChanged(event: any) {
+    if (event.detail.value === 'login') {
+      this.slides.slidePrev();
+      this.wavesPosition += this.wavesDifference;
+    } else {
+      this.slides.slideNext();
+      this.wavesPosition -= this.wavesDifference;
+    }
+  }
+
   async login() {
     await this.presentLoading();
 
