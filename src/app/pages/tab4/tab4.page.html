@@ -6,8 +6,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>De onde?</ion-label>
+      <ion-input type="text" [(ngModel)]="originPosition"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label>Para onde?</ion-label>
+      <ion-input type="text" [(ngModel)]="destinationPosition"></ion-input>
+    </ion-item>
 
-  <ion-label>Parceiros - adicionar o maps</ion-label>
+    <div padding>
+      <button ion-button (click)="calculateRoute()">Traçar rota</button>
+    </div>
+  </ion-list>
+
+  <div #map id="map"></div>
+  <iframe style="padding:10px"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.1055149967488!2d-47.89510318514506!3d-15.798389389048792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ea4db12f751d5%3A0x2d024edd8d03967!2sHoogli%20-%20Marketing%20Digital%20em%20Bras%C3%ADlia!5e0!3m2!1spt-BR!2sbr!4v1637626150005!5m2!1spt-BR!2sbr"
+    width="370" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </ion-content>
