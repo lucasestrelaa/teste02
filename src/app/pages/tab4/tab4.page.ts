@@ -22,7 +22,7 @@ export class Tab4Page {
   }
 
   ionViewDidLoad() {
-    //this.initializeMap();
+    this.initializeMap();
   }
 
   initializeMap() {
