@@ -87,6 +87,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/consulta/consulta.module').then( m => m.ConsultaPageModule),canActivate: [AuthGuard]
   },
   {
+    path: 'consulta/:id',
+    loadChildren: () => import('./pages/consulta/consulta.module').then( m => m.ConsultaPageModule),canActivate: [AuthGuard]
+  },
+  {
     path: 'listconsultas',
     loadChildren: () => import('./pages/listconsultas/listconsultas.module').then( m => m.ListconsultasPageModule),canActivate: [AuthGuard]
   },

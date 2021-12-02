@@ -31,5 +31,29 @@ export class Tab1Page {
     });
 
   }
+  ngOnDestroy() {
+    this.consultaSubscription.unsubscribe();
+  }
+
+  async deleteConsulta(id: string) {
+    try {
+      await this.consultaService.deleteConsulta(id);
+    } catch (error) {
+      this.presentToast('Erro ao tentar deletar');
+    }
+  }
+
+  voltar(){
+    this.route.navigate(['/adm']);
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    return this.loading.present();
+  }
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({ message, duration: 2000 });
+    toast.present();
+  }
 
 }
