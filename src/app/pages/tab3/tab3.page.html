@@ -1,20 +1,14 @@
-<ion-header [translucent]="true">
-
-    <ion-toolbar color="primary">
-        <ion-title>
-            Home
-        </ion-title>
-        <ion-button [routerLink]="['/adm']" slot="end">adm</ion-button>
-        <ion-button (click)="sair()" slot="end">sair</ion-button>
-    </ion-toolbar>
-
-</ion-header>
-
+<ion-buttons>
+    <ion-button [routerLink]="['/adm']" slot="end">adm</ion-button>
+    <ion-button (click)="sair()" slot="end">sair</ion-button>
+</ion-buttons>
 <ion-content [fullscreen]="true">
 
-    <ion-item class="user" button>
-        <ion-label>Olá (usuário)</ion-label>
-    </ion-item>
+    <div class="user">
+        <h1>Olá {{ usuarios.nome }}, Tudo bem?</h1>
+    </div>
+
+
 
 
     <ion-card class="produto">
@@ -31,10 +25,13 @@
             <ion-col>
                 <a href='/listorgaosemissores'>
                     <ion-card class="secoes">
+
                         <ion-card-content>
                             <ion-icon name="home-outline"></ion-icon>
                             <ion-label>Consultas</ion-label>
                         </ion-card-content>
+
+
                     </ion-card>
                 </a>
             </ion-col>

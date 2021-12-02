@@ -1,0 +1,47 @@
+.container {
+    --background: linear-gradient(to bottom, #83f5d4, #24cba9);
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 2;
+    &.top {
+        top: 25%;
+    }
+    &.bottom {
+        bottom: 30%;
+        span {
+            color: #fff;
+        }
+    }
+}
+
+.itens {
+    margin-bottom: 50%;
+    margin-top: 25%;
+    ion-text {
+        text-align: center;
+        padding: 10px;
+    }
+}
+
+ion-buttons {
+    justify-content: center;
+    top: 25%;
+    ion-button {
+        background-color: #ffffff;
+        color: #43d8b5;
+        margin: 5px;
+        border: 1px solid #fff;
+        border-radius: 15px;
+        padding: 0px 40px 0px 40px;
+    }
+    ion-button:hover {
+        background-color: #43d8b5;
+        color: #fff;
+        margin: 5px;
+        border-radius: 15px;
+        padding: 0px 40px 0px 40px;
+    }
+}

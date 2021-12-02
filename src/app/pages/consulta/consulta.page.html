@@ -11,7 +11,7 @@
     <ion-list>
         <ion-label>Paciente</ion-label>
         <ion-select [(ngModel)]="consulta.idPaciente">
-            <ion-select-option *ngFor="let usuario of usuarios" value="{{usuario.idPaciente}}">{{ usuario.nome }}
+            <ion-select-option *ngFor="let usuario of usuarios" value="{{usuario.id}}">{{ usuario.nome }}
             </ion-select-option>
         </ion-select>
 
@@ -22,12 +22,12 @@
         </ion-select>
         <ion-label>Médico</ion-label>
         <ion-select [(ngModel)]="consulta.idMedico">
-            <ion-select-option *ngFor="let medico of medicos" value="{{medico.idMedico}}">{{ medico.nome }}
+            <ion-select-option *ngFor="let medico of medicos" value="{{medico.id}}">{{ medico.nome }}
             </ion-select-option>
         </ion-select>
         <ion-label>Clínica</ion-label>
         <ion-select [(ngModel)]="consulta.idClinica">
-            <ion-select-option *ngFor="let clinica of clinicas" value="{{clinica.idClinica}}">{{ clinica.nomeFantasia }}
+            <ion-select-option *ngFor="let clinica of clinicas" value="{{clinica.id}}">{{ clinica.nomeFantasia }}
             </ion-select-option>
         </ion-select>
         <!-- <ion-item>
@@ -43,7 +43,7 @@
 </ion-content>
 <ion-footer>
     <ion-toolbar>
-        <ion-button (click)="saveConsulta()" expand="block">
+        <ion-button color="success" (click)="saveConsulta()" expand="block">
             Salvar Consulta
         </ion-button>
     </ion-toolbar>

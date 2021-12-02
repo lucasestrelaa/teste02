@@ -106,11 +106,18 @@ export class ConsultaPage implements OnInit {
       this.especialidades = data;
     });
 
-
+    if (this.clinicaId) this.loadConsulta();
     //if (this.consultaId) this.loadMedico();
   }
 
   ngOnInit() {
+  }
+  loadConsulta() {
+    console.log("teste"+this.consultaId);
+    this.consultasSubscription = this.consultaService.getConsulta(this.consultaId).subscribe(data => {
+      this.consulta = data;
+      //console.log(data + "Medico data")
+    });
   }
 
   //Paciente

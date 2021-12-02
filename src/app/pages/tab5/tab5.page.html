@@ -3,7 +3,7 @@
         <ion-title>
             Perfil
         </ion-title>
-        <ion-button [routerLink]="['/listdependentes']" slot="end">dependentes</ion-button>
+        <ion-button color="success" [routerLink]="['/listdependentes']" slot="end">dependentes</ion-button>
     </ion-toolbar>
 </ion-header>
 
@@ -29,8 +29,7 @@
         </ion-item>
         <ion-label>Órgão emissor</ion-label>
         <ion-select [(ngModel)]="usuario.orgaoemissor">
-            <ion-select-option *ngFor="let orgaoemissor of orgaosemissores" value="{{orgaoemissor.id}}">{{
-                orgaoemissor.nome }}</ion-select-option>
+            <ion-select-option *ngFor="let orgaoemissor of orgaosemissores" value="{{orgaoemissor.id}}">{{ orgaoemissor.nome }}</ion-select-option>
         </ion-select>
         <ion-item>
             <ion-label>
@@ -65,7 +64,7 @@
 </ion-content>
 <ion-footer>
     <ion-toolbar>
-        <ion-button (click)="saveUsuario()" expand="block">
+        <ion-button color="success" (click)="saveUsuario()" expand="block">
             Salvar Usuario
         </ion-button>
     </ion-toolbar>

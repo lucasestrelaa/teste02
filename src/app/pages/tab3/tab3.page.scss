@@ -11,19 +11,28 @@ ion-title {
 }
 
 .secoes {
-    background-color: #efefef;
+    background-color: #ffffff;
     color: #000;
     text-align: center;
     width: 80%;
     height: auto;
+    border-radius: 25px;
+    box-shadow: 0 0 1em #d5d5d5;
     ion-card-content {
-        padding: 10px;
+        padding: 4px;
+        margin: 8px 4px;
         font-size: 11px;
     }
     ion-icon {
         width: 100%;
+        height: 32px;
     }
     ion-label {}
+}
+
+.item {
+    width: 30px;
+    height: auto;
 }
 
 ion-card-title {
@@ -33,11 +42,16 @@ ion-card-title {
 
 ion-card {}
 
+ion-button {
+    --background: #24cba9;
+    --color: #fff;
+}
+
 .produto {
     width: auto;
     height: 150px;
 }
 
 .user {
-    padding-bottom: 15px;
+    padding: 10px;
 }

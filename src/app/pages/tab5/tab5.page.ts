@@ -19,6 +19,7 @@ export class Tab5Page {
   private usuarioId: string = null;
   public usuario: User = {};
   public usuarios: User = {};
+  public pacientes: {};
   private Iduser: string;
   private email: string;
   public userEmail: string;
@@ -66,6 +67,7 @@ export class Tab5Page {
           this.usuario = data[x];
           this.usuarios = data[x];
           this.Iduser = data[x].id;
+          this.pacientes = data[x];
           //console.log(this.usuarios.profissao+ " " + this.usuarios.id)
         } else {
           this.usuarios.email = this.email;

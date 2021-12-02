@@ -1,0 +1,45 @@
+<ion-content class="container">
+    <!-- ion-content -->
+
+    <div class="back2"></div>
+
+    <!-- <ion-slide>
+          <div class="slide-inner ion-padding">
+              <h1>Login</h1>
+              <ion-item class="ion-margin-top">
+                  <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
+              </ion-item>
+              <ion-button (click)="login()">Login</ion-button>
+          </div>
+      </ion-slide> -->
+
+    <div class="sessao1">
+        <h1>Criar conta</h1>
+
+
+        <div class="card">
+
+            <ion-item>
+                <ion-input type="nome" placeholder="Nome" [(ngModel)]="userRegister.name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="email" placeholder="E-mail" [(ngModel)]="userRegister.email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="password" placeholder="Senha" [(ngModel)]="userRegister.password"></ion-input>
+            </ion-item>
+
+            <ion-button color="success" (click)="register()">Cadastrar</ion-button>
+
+        </div>
+    </div>
+
+    <div class="sessao2">
+        <ion-label>Já possui cadastro?<a href="/login">login</a></ion-label>
+    </div>
+
+
+</ion-content>

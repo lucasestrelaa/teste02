@@ -7,7 +7,11 @@ import { AdmPage } from './pages/adm/adm.page';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'principal', pathMatch: 'full' },
+  {
+    path: 'principal',
+    loadChildren: () => import('./pages/principal/principal.module').then( m => m.PrincipalPageModule)
+  },
   { path: '', loadChildren: () => import('../app/pages/tabs/tabs.module').then(m => m.TabsPageModule), canActivate: [AuthGuard] },
   { path: 'login', loadChildren: () => import('../app/pages/login/login.module').then(m => m.LoginPageModule), canActivate: [LoginGuard] },
   {
@@ -56,36 +60,45 @@ const routes: Routes = [
   },
   {
     path: 'orgaoemissor',
-    loadChildren: () => import('./pages/orgaoemissor/orgaoemissor.module').then( m => m.OrgaoemissorPageModule)
+    loadChildren: () => import('./pages/orgaoemissor/orgaoemissor.module').then( m => m.OrgaoemissorPageModule),canActivate: [AuthGuard]
   },
   {
     path: 'orgaoemissor/:id',
-    loadChildren: () => import('./pages/orgaoemissor/orgaoemissor.module').then( m => m.OrgaoemissorPageModule)
+    loadChildren: () => import('./pages/orgaoemissor/orgaoemissor.module').then( m => m.OrgaoemissorPageModule),canActivate: [AuthGuard]
   },
   {
     path: 'listorgaosemissores',
-    loadChildren: () => import('./pages/listorgaosemissores/listorgaosemissores.module').then( m => m.ListorgaosemissoresPageModule)
+    loadChildren: () => import('./pages/listorgaosemissores/listorgaosemissores.module').then( m => m.ListorgaosemissoresPageModule),canActivate: [AuthGuard]
   },
   {
     path: 'dependente',
-    loadChildren: () => import('./pages/dependente/dependente.module').then( m => m.DependentePageModule)
+    loadChildren: () => import('./pages/dependente/dependente.module').then( m => m.DependentePageModule),canActivate: [AuthGuard]
   },
   {
     path: 'dependente/:id',
-    loadChildren: () => import('./pages/dependente/dependente.module').then( m => m.DependentePageModule)
+    loadChildren: () => import('./pages/dependente/dependente.module').then( m => m.DependentePageModule),canActivate: [AuthGuard]
   },
   {
     path: 'listdependentes',
-    loadChildren: () => import('./pages/listdependentes/listdependentes.module').then( m => m.ListdependentesPageModule)
+    loadChildren: () => import('./pages/listdependentes/listdependentes.module').then( m => m.ListdependentesPageModule),canActivate: [AuthGuard]
   },
   {
     path: 'consulta',
-    loadChildren: () => import('./pages/consulta/consulta.module').then( m => m.ConsultaPageModule)
+    loadChildren: () => import('./pages/consulta/consulta.module').then( m => m.ConsultaPageModule),canActivate: [AuthGuard]
   },
   {
     path: 'listconsultas',
-    loadChildren: () => import('./pages/listconsultas/listconsultas.module').then( m => m.ListconsultasPageModule)
+    loadChildren: () => import('./pages/listconsultas/listconsultas.module').then( m => m.ListconsultasPageModule),canActivate: [AuthGuard]
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./pages/cadastro/cadastro.module').then( m => m.CadastroPageModule), canActivate: [LoginGuard]
+  },
+  {
+    path: 'recupera',
+    loadChildren: () => import('./pages/recupera/recupera.module').then( m => m.RecuperaPageModule)
   }
+  
 
 ];
 @NgModule({
