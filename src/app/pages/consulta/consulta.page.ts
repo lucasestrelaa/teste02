@@ -131,6 +131,7 @@ export class ConsultaPage implements OnInit {
     this.EspecialidadesSubscription = this.especialidadeService.getEspecialidades().subscribe(data => {
       this.especialidades = data;
     });
+    this.usuarios.pop();
     this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
       // for(let i = 0; i < data.length; i++){
       //   if(data[i].id == this.userId){
@@ -140,10 +141,11 @@ export class ConsultaPage implements OnInit {
       //     console.log(this.usuarios. + "usuario")
       //   }
       // }
+      console.log(this.userId)
       data.map((arr)=>{
         if(arr.id == this.userId){
-          this.usuarios = data;
-          //this.paciente = data;
+          //this.usuarios = data;
+          this.usuarios.push(arr);
         }
       })
       
@@ -159,12 +161,13 @@ export class ConsultaPage implements OnInit {
       // }
       
       data.map((arr)=>{
-        console.log(arr.idtitular +" - "+ this.userId)
-        if(arr.idtitular == this.userId){
-          console.log(arr.id +" - "+ this.userId)
+        //console.log(arr.idtitular +" - "+ this.userId)
+        if(arr.idtitular != null && arr.idtitular == this.userId){
+          console.log(arr.idtitular +" - "+ this.userId + " :dependente")
           //this.usuarios = arr;
-          this.paciente = arr;
-          console.log(this.paciente + " paciente")
+          //this.paciente = arr;
+          this.usuarios.push(arr)
+          console.log(this.usuarios + " :paciente")
         }
       })
       
@@ -226,7 +229,7 @@ export class ConsultaPage implements OnInit {
         await this.consultaService.updateConsulta(this.consultaId, this.consulta);
         await this.loading.dismiss();
 
-        this.navCtrl.navigateBack('/listconsultas');
+        this.navCtrl.navigateBack('/tabs/tab1');
       } catch (error) {
         this.presentToast('Erro ao tentar salvar');
         this.loading.dismiss();
@@ -239,7 +242,7 @@ export class ConsultaPage implements OnInit {
         await this.consultaService.addConsulta(this.consulta);
         await this.loading.dismiss();
 
-        this.navCtrl.navigateBack('/listconsultas');
+        this.navCtrl.navigateBack('/tabs/tab1');
       } catch (error) {
         this.presentToast('Erro ao tentar salvar');
         this.loading.dismiss();

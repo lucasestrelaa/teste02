@@ -32,11 +32,13 @@
                 <!--<ion-avatar slot="start">
       <img [src]="medico.picture">
     </ion-avatar>-->
-
+                <div [hidden]="!dependenteConf" class="dependente"></div>
                 <ion-label>
-                    {{ consulta.idPaciente }}
-                    <p>{{ consulta.idMedico }}</p>
-                    <p>{{ consulta.idClinica }}</p>
+
+                    {{ usuario.nome }}
+                    <p>{{ medico.nome }}</p>
+                    <p>{{ clinica.nomeFantasia }}</p>
+
                 </ion-label>
 
                 <ion-note color="primary" slot="end" *ngIf="consulta.dataConsulta">{{ consulta.dataConsulta }}</ion-note>
