@@ -1,6 +1,8 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "teste02",
-	"webDir": "www",
-	"bundledWebRuntime": false
+    "appId": "com.hoogli.app01",
+    "appName": "Hoogli",
+    "webDir": "www",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "cordova": {}
 }

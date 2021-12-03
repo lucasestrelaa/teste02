@@ -16,6 +16,8 @@ export class Tab1Page {
   public consultas = new Array<Consulta>();
   public consultasPaciente = new Array<Consulta>();
   private consultaSubscription: Subscription;
+
+  
   constructor(
     private authService: AuthService,
     private route: Router,
@@ -45,6 +47,14 @@ export class Tab1Page {
 
   voltar(){
     this.route.navigate(['/adm']);
+  }
+  doRefresh(event) {
+    console.log('Begin async operation');
+    window.location.reload()
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
   }
 
   async presentLoading() {

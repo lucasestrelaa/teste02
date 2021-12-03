@@ -13,51 +13,51 @@
             <ion-label>
                 Usuário
             </ion-label>
-            <ion-input type="text" [(ngModel)]="usuario.nome" placeholder="Nome"></ion-input>
+            <ion-input type="text" [(ngModel)]="usuarios.nome" placeholder="Nome"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>
                 RG
             </ion-label>
-            <ion-input type="text" [(ngModel)]="usuario.rg" placeholder="RG"></ion-input>
+            <ion-input type="text" [(ngModel)]="usuarios.rg" placeholder="RG"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>
                 CPF
             </ion-label>
-            <ion-input type="text" [(ngModel)]="usuario.cpf" placeholder="CPF"></ion-input>
+            <ion-input type="text" [(ngModel)]="usuarios.cpf" placeholder="CPF"></ion-input>
         </ion-item>
         <ion-label>Órgão emissor</ion-label>
-        <ion-select [(ngModel)]="usuario.orgaoemissor">
+        <ion-select [(ngModel)]="usuarios.orgaoemissor">
             <ion-select-option *ngFor="let orgaoemissor of orgaosemissores" value="{{orgaoemissor.id}}">{{ orgaoemissor.nome }}</ion-select-option>
         </ion-select>
         <ion-item>
             <ion-label>
                 Data da emissão
             </ion-label>
-            <ion-input type="data" [(ngModel)]="usuario.dtemissao" placeholder="data da emissão"></ion-input>
+            <ion-input type="data" [(ngModel)]="usuarios.dtemissao" placeholder="data da emissão"></ion-input>
         </ion-item>
         <ion-label>Cidade</ion-label>
-        <ion-select [(ngModel)]="usuario.uf">
+        <ion-select [(ngModel)]="usuarios.uf">
             <ion-select-option *ngFor="let uf of ufs" value="{{uf.id}}">{{ uf.nome }}</ion-select-option>
         </ion-select>
         <ion-item>
             <ion-label>
                 Data de nascimento
             </ion-label>
-            <ion-input type="data" [(ngModel)]="usuario.dtnascimento" placeholder="data de nascimento"></ion-input>
+            <ion-input type="data" [(ngModel)]="usuarios.dtnascimento" placeholder="data de nascimento"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>
                 Título de eleitor
             </ion-label>
-            <ion-input type="data" [(ngModel)]="usuario.tituloeleitor" placeholder="Título de eleitor"></ion-input>
+            <ion-input type="data" [(ngModel)]="usuarios.tituloeleitor" placeholder="Título de eleitor"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>
-                Título de eleitor
+                Email
             </ion-label>
-            <ion-input type="data" [(ngModel)]="usuario.email" placeholder="email" readonly></ion-input>
+            <ion-input type="data" [(ngModel)]="usuarios.email" placeholder="email" readonly></ion-input>
         </ion-item>
     </ion-list>
 

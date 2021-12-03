@@ -93,4 +93,10 @@ ion-slides {
     ion-label {
         padding-bottom: 10px;
     }
+    .label-footer {
+        /* top: 60%; */
+        position: fixed;
+        bottom: 10%;
+        right: 68px;
+    }
 }

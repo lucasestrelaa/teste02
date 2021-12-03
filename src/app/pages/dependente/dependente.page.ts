@@ -76,24 +76,28 @@ export class DependentePage implements OnInit {
 
     //ver porque está chegando vazio o authservice
     this.usuarioId = (await this.authService.getAuth().currentUser).uid;
-    console.log(this.usuarioId + "123")
-    this.dependente.idtitular = this.usuarioId;
-    console.log(this.userEmail + this.email)
-    this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
-      for (let x = 0; x < data.length; x++) {
-        if (data[x].id == this.usuarioId) {
-          this.usuario = data[x];
-          this.usuarios = data[x];
-          this.Iduser = data[x].id;
-          //console.log(this.usuarios.profissao+ " " + this.usuarios.id)
-        } else {
-          this.dependente.email = this.email;
-          this.dependente.idtitular = this.usuarioId;
-          //this.dependente.idtitular = this.usuarioId;
-          //this.usuarios.id = this.userId;
-          //console.log(this.usuarios.phoneNumber + this.usuarios.id + "13")
-        }
+    console.log(this.usuarioId + " - 123")
+    //this.dependente.idtitular = this.usuarioId;
+    //console.log(this.userEmail + this.email)
+    this.usuarioSubscription = this.usuarioService.getUsuario(this.usuarioId).subscribe(data => {
+      if(this.dependente.idtitular != data.id){
+        this.usuario = data;
+        this.dependente.idtitular = data.id;
       }
+      // for (let x = 0; x < data.length; x++) {
+      //   if (data[x].id == this.usuarioId) {
+      //     this.usuario = data[x];
+      //     this.usuarios = data[x];
+      //     this.Iduser = data[x].id;
+      //     //console.log(this.usuarios.profissao+ " " + this.usuarios.id)
+      //   } else {
+      //     this.dependente.email = this.email;
+      //     this.dependente.idtitular = this.usuarioId;
+      //     //this.dependente.idtitular = this.usuarioId;
+      //     //this.usuarios.id = this.userId;
+      //     //console.log(this.usuarios.phoneNumber + this.usuarios.id + "13")
+      //   }
+      // }
     });
     //if (this.userId) this.loadUsuario();
   }

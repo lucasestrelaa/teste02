@@ -1,0 +1,8 @@
+{
+	"appId": "com.hoogli.app01",
+	"appName": "Hoogli",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"cordova": {}
+}

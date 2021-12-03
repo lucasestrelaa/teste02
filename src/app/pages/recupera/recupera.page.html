@@ -1,9 +1,25 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>recupera</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="container">
+    <div class="back2"></div>
 
-<ion-content>
+    <div class="sessao1">
+        <h1>Recupera</h1>
+        <div class="card">
 
+            <ion-item class="ion-margin-top">
+                <ion-input type="email" placeholder="E-mail" [(ngModel)]="userRecupera.email"></ion-input>
+            </ion-item>
+            <!-- <ion-item>
+                <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
+            </ion-item>
+            <ion-label></ion-label> -->
+            <ion-button color="success" (click)="recupera()">recuperar</ion-button>
+            <!-- <hr>
+            <ion-label>Esqueceu sua senha?</ion-label><br>
+            <ion-label><a href="/recupera">Recuperar senha</a></ion-label> -->
+        </div>
+        <ion-label class="label-footer">Não possui cadastro?<a href="/cadastro">cadastrar</a></ion-label>
+    </div>
+    <!-- <div class="sessao2">
+      <ion-label>Não possui cadastro?<a href="/cadastro">cadastrar</a></ion-label>
+  </div> -->
 </ion-content>

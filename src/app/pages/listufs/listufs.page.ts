@@ -42,6 +42,14 @@ export class ListufsPage implements OnInit {
   voltar(){
     this.route.navigate(['/adm']);
   }
+  doRefresh(event) {
+    console.log('Begin async operation');
+    window.location.reload()
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
 
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });

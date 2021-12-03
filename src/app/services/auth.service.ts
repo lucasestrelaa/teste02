@@ -24,6 +24,9 @@ export class AuthService {
   register(user: User) {
     return this.afa.createUserWithEmailAndPassword(user.email, user.password);
   }
+  recupera(user: User){
+    return this.afa.sendPasswordResetEmail(user.email);
+  }
   logout() {
     this.getAuth();
     return this.afa.signOut().then(() => {
