@@ -2,12 +2,20 @@ ion-toolbar {
     background-color: aqua;
 }
 
+* {
+    color: #636363;
+}
+
 main {
     background-color: #007bff2a;
 }
 
 ion-title {
     /*color: rgb(122, 122, 122);*/
+}
+
+ion-card {
+    box-shadow: 0 0 1em #7c7c7c;
 }
 
 .secoes {
@@ -17,7 +25,7 @@ ion-title {
     width: 80%;
     height: auto;
     border-radius: 25px;
-    box-shadow: 0 0 1em #d5d5d5;
+    box-shadow: 0 0 1em #7c7c7c;
     ion-card-content {
         padding: 4px;
         margin: 8px 4px;

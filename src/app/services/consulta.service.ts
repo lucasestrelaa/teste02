@@ -19,14 +19,12 @@ export class ConsultaService {
         return actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
-
           return { id, ...data };
         });
       })
     );
   }
   addConsulta(consulta: Consulta) {
-    alert("salvou consulta")
     return this.consultasCollection.add(consulta);
   }
   getConsulta(id: string) {

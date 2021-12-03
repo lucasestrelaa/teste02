@@ -55,6 +55,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/uf/uf.module').then( m => m.UfPageModule),canActivate: [AuthGuard]
   },
   {
+    path: 'uf/:id',
+    loadChildren: () => import('./pages/uf/uf.module').then( m => m.UfPageModule),canActivate: [AuthGuard]
+  },
+  {
     path: 'listufs',
     loadChildren: () => import('./pages/listufs/listufs.module').then( m => m.ListufsPageModule),canActivate: [AuthGuard]
   },

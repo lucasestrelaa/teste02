@@ -207,16 +207,8 @@ export class ConsultaPage implements OnInit {
           }else{
             this.consulta.dependente = false;
           }
-          //if(arr.idtitular){
-
-          //}
         })
         
-        // if(this.usuarios){
-        //   this.consulta.nomePaciente = this.usuario.nome;
-        // }else{
-        //   this.consulta.nomePaciente = this.usuario.nome;
-        // }
         await this.consultaService.updateConsulta(this.consultaId, this.consulta);
         await this.loading.dismiss();
 
@@ -226,13 +218,11 @@ export class ConsultaPage implements OnInit {
         this.loading.dismiss();
       }
     } else {
-      //this.medico.createdAt = new Date().getTime();
 
       try {
         this.usuarios.map((arr)=>{
           if(this.consulta.idPaciente == arr.id){
             this.consulta.nomePaciente = arr.nome;
-            //console.log(arr.nome)
           }
           if(arr.tipoUsuario == '4'){
             this.consulta.dependente = true;

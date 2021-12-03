@@ -11,41 +11,46 @@
     <ion-list>
         <ion-item>
             <ion-label>
-                Usuário
+                Usuário:
             </ion-label>
             <ion-input type="text" [(ngModel)]="usuarios.nome" placeholder="Nome"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>
-                RG
+                RG:
             </ion-label>
             <ion-input type="text" [(ngModel)]="usuarios.rg" placeholder="RG"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>
-                CPF
+                CPF:
             </ion-label>
             <ion-input type="text" [(ngModel)]="usuarios.cpf" placeholder="CPF"></ion-input>
         </ion-item>
-        <ion-label>Órgão emissor</ion-label>
-        <ion-select [(ngModel)]="usuarios.orgaoemissor">
-            <ion-select-option *ngFor="let orgaoemissor of orgaosemissores" value="{{orgaoemissor.id}}">{{ orgaoemissor.nome }}</ion-select-option>
-        </ion-select>
+        <ion-item>
+            <ion-label>Órgão emissor</ion-label>
+            <ion-select [(ngModel)]="usuarios.orgaoemissor">
+                <ion-select-option *ngFor="let orgaoemissor of orgaosemissores" value="{{orgaoemissor.id}}">{{ orgaoemissor.nome }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+
         <ion-item>
             <ion-label>
                 Data da emissão
             </ion-label>
-            <ion-input type="data" [(ngModel)]="usuarios.dtemissao" placeholder="data da emissão"></ion-input>
+            <ion-input type="date" [(ngModel)]="usuarios.dtemissao" placeholder="data da emissão"></ion-input>
         </ion-item>
-        <ion-label>Cidade</ion-label>
-        <ion-select [(ngModel)]="usuarios.uf">
-            <ion-select-option *ngFor="let uf of ufs" value="{{uf.id}}">{{ uf.nome }}</ion-select-option>
-        </ion-select>
+        <ion-item>
+            <ion-label>Cidade</ion-label>
+            <ion-select [(ngModel)]="usuarios.uf">
+                <ion-select-option *ngFor="let uf of ufs" value="{{uf.id}}">{{ uf.nome }}</ion-select-option>
+            </ion-select>
+        </ion-item>
         <ion-item>
             <ion-label>
                 Data de nascimento
             </ion-label>
-            <ion-input type="data" [(ngModel)]="usuarios.dtnascimento" placeholder="data de nascimento"></ion-input>
+            <ion-input type="date" [(ngModel)]="usuarios.dtnascimento" placeholder="data de nascimento"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>

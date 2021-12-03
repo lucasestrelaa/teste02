@@ -10,18 +10,6 @@
 <ion-content>
     <ion-list>
         <ion-label>Paciente</ion-label>
-        <ion-list>
-            <ion-radio-group value="biff">
-                <ion-item>
-                    <ion-label>Titular</ion-label>
-                    <ion-radio slot="start" value="titular"></ion-radio>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Dependente</ion-label>
-                    <ion-radio slot="start" value="dependente"></ion-radio>
-                </ion-item>
-            </ion-radio-group>
-        </ion-list>
         <ion-select [(ngModel)]="consulta.idPaciente">
             <ion-select-option *ngFor="let usuario of usuarios" value="{{usuario.id}}">{{usuario.nome}}
             </ion-select-option>

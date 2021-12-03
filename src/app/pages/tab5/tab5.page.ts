@@ -74,10 +74,7 @@ export class Tab5Page {
           console.log(this.usuarios.id+ " -+ " )
         } else {
           this.usuarios.email = this.email;
-          
           console.log(this.usuarioId + this.email);
-          //this.usuarios.id = this.userId;
-          //console.log(this.usuarios.phoneNumber + this.usuarios.id + "13")
         }
       }
     });
