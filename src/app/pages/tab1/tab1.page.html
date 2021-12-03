@@ -1,13 +1,16 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons (click)="voltar()" slot="start">
+        <!-- <ion-buttons (click)="voltar()" slot="start">
             <ion-icon name="arrow-back-outline"></ion-icon>
-        </ion-buttons>
+        </ion-buttons> -->
         <ion-title>Consultas</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <ion-list *ngIf="!consultas.length">
         <ion-item *ngFor="let item of [0, 1, 2]">
             <ion-avatar slot="start">
@@ -32,10 +35,11 @@
                 <!--<ion-avatar slot="start">
       <img [src]="medico.picture">
     </ion-avatar>-->
-                <div [hidden]="!dependenteConf" class="dependente"></div>
+                <div [hidden]="!consulta.dependente" class="dependente"></div>
                 <ion-label>
 
-                    {{ usuario.nome }}
+                    {{ consulta.nomePaciente }}
+
                     <p>{{ medico.nome }}</p>
                     <p>{{ clinica.nomeFantasia }}</p>
 

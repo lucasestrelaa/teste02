@@ -12,4 +12,5 @@ export interface Dependentes {
     dtnascimento?: Date,
     tituloeleitor?: string,
     idtitular?: string,
+    tipoUsuario?: string,
 }

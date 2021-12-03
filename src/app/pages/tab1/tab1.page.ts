@@ -26,6 +26,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class Tab1Page {
   private loading: any;
   public consultas = new Array<Consulta>();
+  public dependentesP = new Array;
   public consultasPaciente = new Array<Consulta>();
   private consultaSubscription: Subscription;
   public dependenteConf = false;
@@ -41,7 +42,7 @@ export class Tab1Page {
   public dependente: Dependentes = {};
   private dependenteSubscription: Subscription;
 
-  public paciente = {};
+  public pacientes = [];
 
 
 
@@ -105,22 +106,97 @@ export class Tab1Page {
     private toastCtrl: ToastController
   ) {
     this.loadUsuario();
+    this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
+      // for(let i = 0; i < data.length; i++){
+      //   if(data[i].id == this.userId){
+      //     //console.log(data[i].id)
+      //     this.usuarios = data;
+      //     this.paciente = data;
+      //     console.log(this.usuarios. + "usuario")
+      //   }
+      // }
+      data.map((arr)=>{
+        if(arr.id == this.userId){
+          //this.usuarios = data;
+          this.pacientes.push(arr);
+          //console.log(this.pacientes + "1")
+        }
+      })
+      
+      //console.log(data + "usuario")
+    });
+    this.dependenteSubscription = this.dependenteService.getDependentes().subscribe(data => {
+      // for(let i = 0; i < data.length; i++){
+      //   if(data[i].id == this.userId){
+      //     //console.log(data[i].id)
+      //     this.paciente = data;
+      //     console.log(this.paciente + "usuario")
+      //   }
+      // }
+      
+      data.map((arr)=>{
+        //console.log(arr.idtitular +" - "+ this.userId)
+        if(arr.idtitular == this.userId){
+          //console.log(arr.id +" - "+ this.userId)
+          this.dependente = arr;
+          
+          this.pacientes.push(arr);
+          //console.log(this.pacientes + "2")
+          this.pacientes.map((arr)=>{
+            // console.log(arr.nome)
+          })
+          //console.log(this.paciente + " paciente")
+        }
+      })
+      
+    });
+    this.consultas.pop();
     this.consultaSubscription = this.consultaService.getConsultas().subscribe(data => {
-      this.consultas.pop();
-      for(let i = 0; i < data.length; i++){
+      
+      this.pacientes.map((arr)=>{
         
-        console.log(this.userId + " - "+ data[i].idPaciente)
-        if(data[i].idPaciente != null){
-          //console.log(this.userId + " - "+ data[i].idPaciente)
-          //console.log(data[i])
-          this.consultas.push(data[i]);
-          //puxar dados
-          this.getDependente(data[i].idPaciente);
-          this.getMedico(data[i].idMedico);
-          this.getClinica(data[i].idClinica);
+        console.log(arr.id)
+        for(let i = 0; i < data.length; i++){
+          
+          console.log(i)
+          if(data[i].idPaciente != null && data[i].idPaciente == arr.id){
+            //console.log(this.userId + " - "+ data[i].idPaciente)
+            //console.log(data[i])
+            if(arr.tipoUsuario == 4){
+              data[i].dependente = true
+            }else{
+              data[i].dependente = false
+            }
+            this.consultas.push(data[i]);
+            console.log(this.consultas)
+            
+            //puxar dados
+            //this.getDependente(data[i].idPaciente);
+            this.getMedico(data[i].idMedico);
+            this.getClinica(data[i].idClinica);
+            //console.log(this.pacientes.map((arr)=>{console.log(arr.nome)}))
+          }
+          
+          
+          
         }
         
-      }
+        // for(let i = 0; i < data.length; i++){
+        
+        //   //console.log(i)
+        //   if(data[i].idPaciente != null && data[i].idPaciente == arr.){
+        //     //console.log(this.userId + " - "+ data[i].idPaciente)
+        //     //console.log(data[i])
+        //     this.consultas.push(data[i]);
+        //     //puxar dados
+        //     this.getDependente(data[i].idPaciente);
+        //     this.getMedico(data[i].idMedico);
+        //     this.getClinica(data[i].idClinica);
+        //   }
+          
+        // }
+      })
+      
       //this.consultas = data;
     });
     this.EspecialidadesSubscription = this.especialidadeService.getEspecialidades().subscribe(data => {
@@ -141,44 +217,7 @@ export class Tab1Page {
     this.EspecialidadesSubscription = this.especialidadeService.getEspecialidades().subscribe(data => {
       this.especialidades = data;
     });
-    this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
-      // for(let i = 0; i < data.length; i++){
-      //   if(data[i].id == this.userId){
-      //     //console.log(data[i].id)
-      //     this.usuarios = data;
-      //     this.paciente = data;
-      //     console.log(this.usuarios. + "usuario")
-      //   }
-      // }
-      data.map((arr)=>{
-        if(arr.id == this.userId){
-          this.usuarios = data;
-          //this.paciente = data;
-        }
-      })
-      
-      //console.log(data + "usuario")
-    });
-    this.dependenteSubscription = this.dependenteService.getDependentes().subscribe(data => {
-      // for(let i = 0; i < data.length; i++){
-      //   if(data[i].id == this.userId){
-      //     //console.log(data[i].id)
-      //     this.paciente = data;
-      //     console.log(this.paciente + "usuario")
-      //   }
-      // }
-      
-      data.map((arr)=>{
-        //console.log(arr.idtitular +" - "+ this.userId)
-        if(arr.idtitular == this.userId){
-          //console.log(arr.id +" - "+ this.userId)
-          //this.usuarios = arr;
-          //this.paciente = arr;
-          //console.log(this.paciente + " paciente")
-        }
-      })
-      
-    });
+    
     //if (this.consultaId) this.loadConsulta();
 
   }
@@ -220,15 +259,16 @@ export class Tab1Page {
     }
   }
   getDependente(idDependente){
-    console.log(idDependente + ": Dependente")
+    //console.log(idDependente + ": Dependente1")
     this.dependenteSubscription = this.dependenteService.getDependente(idDependente).subscribe(data => {
-      //console.log(data + ": dependente");
+      //console.log(data + ": dependente2");
       if(data != null){
-        console.log("dependente")
-        this.usuario = data
+        //console.log("dependente3")
+        this.dependentes.push(data);
         this.dependenteConf = true;
         //console.log(this.dependenteConf)
       }else{
+        //console.log("usuario3")
         this.getUsuario(idDependente)
         this.dependenteConf = false;
         //console.log(this.dependenteConf)
@@ -238,7 +278,7 @@ export class Tab1Page {
   }
   getUsuario(idUsuario){
     this.usuarioSubscription = this.usuarioService.getUsuario(idUsuario).subscribe(data => {
-      this.usuario = data
+      this.usuarios.push(data);
     })
   }
   getMedico(idMedico){

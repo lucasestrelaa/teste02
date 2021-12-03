@@ -11,4 +11,5 @@ export interface User {
   uf?: string,
   dtnascimento?: Date,
   tituloeleitor?: string,
+  tipoUsuario?: string
 }

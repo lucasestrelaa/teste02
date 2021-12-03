@@ -133,57 +133,31 @@ export class ConsultaPage implements OnInit {
     });
     this.usuarios.pop();
     this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
-      // for(let i = 0; i < data.length; i++){
-      //   if(data[i].id == this.userId){
-      //     //console.log(data[i].id)
-      //     this.usuarios = data;
-      //     this.paciente = data;
-      //     console.log(this.usuarios. + "usuario")
-      //   }
-      // }
       console.log(this.userId)
       data.map((arr)=>{
         if(arr.id == this.userId){
-          //this.usuarios = data;
           this.usuarios.push(arr);
         }
       })
-      
-      //console.log(data + "usuario")
     });
     this.dependenteSubscription = this.dependenteService.getDependentes().subscribe(data => {
-      // for(let i = 0; i < data.length; i++){
-      //   if(data[i].id == this.userId){
-      //     //console.log(data[i].id)
-      //     this.paciente = data;
-      //     console.log(this.paciente + "usuario")
-      //   }
-      // }
       
       data.map((arr)=>{
-        //console.log(arr.idtitular +" - "+ this.userId)
         if(arr.idtitular != null && arr.idtitular == this.userId){
           console.log(arr.idtitular +" - "+ this.userId + " :dependente")
-          //this.usuarios = arr;
-          //this.paciente = arr;
           this.usuarios.push(arr)
           console.log(this.usuarios + " :paciente")
         }
       })
-      
     });
     if (this.consultaId) this.loadConsulta();
-    
-    //if (this.consultaId) this.loadMedico();
   }
 
   ngOnInit() {
   }
   loadConsulta() {
-    //console.log("teste"+this.consultaId);
     this.consultasSubscription = this.consultaService.getConsulta(this.consultaId).subscribe(data => {
       this.consulta = data;
-      //console.log(data + "Medico data")
     });
   }
   async loadUsuario() {
@@ -221,11 +195,28 @@ export class ConsultaPage implements OnInit {
   //uf
   async saveConsulta() {
     await this.presentLoading();
-    alert(this.consulta.observacoes);
-    //this.medico.id = (await this.authService.getAuth().currentUser).uid;
-
     if (this.consultaId) {
       try {
+        this.usuarios.map((arr)=>{
+          if(this.consulta.idPaciente == arr.id){
+            this.consulta.nomePaciente = arr.nome;
+            console.log(arr.nome)
+          }
+          if(arr.tipoUsuario == '4'){
+            this.consulta.dependente = true;
+          }else{
+            this.consulta.dependente = false;
+          }
+          //if(arr.idtitular){
+
+          //}
+        })
+        
+        // if(this.usuarios){
+        //   this.consulta.nomePaciente = this.usuario.nome;
+        // }else{
+        //   this.consulta.nomePaciente = this.usuario.nome;
+        // }
         await this.consultaService.updateConsulta(this.consultaId, this.consulta);
         await this.loading.dismiss();
 
@@ -238,7 +229,18 @@ export class ConsultaPage implements OnInit {
       //this.medico.createdAt = new Date().getTime();
 
       try {
-
+        this.usuarios.map((arr)=>{
+          if(this.consulta.idPaciente == arr.id){
+            this.consulta.nomePaciente = arr.nome;
+            //console.log(arr.nome)
+          }
+          if(arr.tipoUsuario == '4'){
+            this.consulta.dependente = true;
+          }else{
+            this.consulta.dependente = false;
+          }
+          
+        })
         await this.consultaService.addConsulta(this.consulta);
         await this.loading.dismiss();
 
