@@ -27,6 +27,12 @@
             </ion-label>
             <ion-input type="text" [(ngModel)]="usuarios.cpf" placeholder="CPF"></ion-input>
         </ion-item>
+        <ion-item [hidden]="usuarios.tipoUsuario != 3">
+            <ion-label>
+                CRM:
+            </ion-label>
+            <ion-input type="text" [(ngModel)]="usuarios.crm" placeholder="CPF"></ion-input>
+        </ion-item>
         <ion-item>
             <ion-label>Órgão emissor</ion-label>
             <ion-select [(ngModel)]="usuarios.orgaoemissor">

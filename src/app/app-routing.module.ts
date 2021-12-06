@@ -105,6 +105,14 @@ const routes: Routes = [
   {
     path: 'recupera',
     loadChildren: () => import('./pages/recupera/recupera.module').then( m => m.RecuperaPageModule)
+  },
+  {
+    path: 'descontos',
+    loadChildren: () => import('./pages/descontos/descontos.module').then( m => m.DescontosPageModule)
+  },
+  {
+    path: 'listdescontos',
+    loadChildren: () => import('./pages/listdescontos/listdescontos.module').then( m => m.ListdescontosPageModule)
   }
   
 

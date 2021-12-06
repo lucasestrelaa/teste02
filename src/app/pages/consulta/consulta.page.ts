@@ -156,6 +156,7 @@ export class ConsultaPage implements OnInit {
   ngOnInit() {
   }
   loadConsulta() {
+    
     this.consultasSubscription = this.consultaService.getConsulta(this.consultaId).subscribe(data => {
       this.consulta = data;
     });

@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/interfaces/user';
+import { AuthService } from 'src/app/services/auth.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-tabs',
@@ -6,7 +10,45 @@ import { Component } from '@angular/core';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
+  private usuarioId: string;
+  public usuario: User = {};
+  public usuarios: User = {};
+  public pacientes: {};
+  private Iduser: string;
+  private email: string;
+  public userEmail: string;
+  private usuarioSubscription: Subscription;
+  constructor(
+    private usuarioService: UsuarioService,
+    private authService: AuthService,
+    
+  ) {
+    this.loadUsuario();
+  }
+  async loadUsuario() {
+    //this.phoneNumber = (await this.authService.getAuth().currentUser).phoneNumber;
+    //this.user.phoneNumber =  (await this.authService.getAuth().currentUser).phoneNumber;
+    this.usuarioId = (await this.authService.getAuth().currentUser).uid;
+    this.email = (await this.authService.getAuth().currentUser).email;
+    //console.log(this.usuarioId + this.email);
+    this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
+      
+      for (let x = 0; x < data.length; x++) {
+        console.log(data[x].id +" - "+this.usuarioId);
+        if (data[x].id == this.usuarioId) {
+          this.usuario = data[x];
+          this.usuarios = data[x];
+          this.Iduser = data[x].id;
+          // this.pacientes = data[x];
 
-  constructor() {}
+          console.log(this.usuarios.tipoUsuario+ " -+ " )
+        } else {
+          this.usuarios.email = this.email;
+          console.log(this.usuarioId + this.email);
+        }
+      }
+    });
+    //if (this.userId) this.loadUsuario();
+  }
 
 }
