@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { IonSlides, LoadingController, ToastController } from '@ionic/angular';
+import { error } from 'console';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -43,24 +44,38 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    await this.presentLoading();
-
+    //await this.presentLoading();
+    
     try {
       await this.authService.login(this.userLogin);
-      this.route.navigate(['/tabs']);
-      //this.router.navigateByUrl('/profile');
-      console.log('usuario logado!')
+      //return this.authService.getAuth()
+      //this.presentToast('Erro ao tentar logar');
+      this.presentToast('Usuário logado!');
     } catch (error) {
+
+      console.log('teste')
       this.presentToast(error.message);
+        
     } finally {
+      
+      //console.log()
+      // if(){
+      //   
+      // }else{
+      //   this.presentToast('Erro ao tentar logar!');
+      // }
+      
+      //console.log('teste2')
       this.loading.dismiss();
     }
+    this.route.navigate(['/tabs']);
   }
   async register() {
     await this.presentLoading();
     try {
       await this.authService.register(this.userRegister);
       //this.route.navigate
+      this.presentToast('Usuario registrado');
       console.log('usuario cadastrado!');
     } catch (error) {
       console.error(error)

@@ -11,6 +11,7 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
+    <!-- <ion-searchbar></ion-searchbar> -->
     <ion-list *ngIf="!especialidades.length">
         <ion-item *ngFor="let item of [0, 1, 2]">
             <ion-avatar slot="start">
@@ -74,3 +75,20 @@
         </ion-grid>
     </ion-toolbar>
 </ion-footer> -->
+<script>
+    const searchbar = document.querySelector('ion-searchbar');
+    const items = Array.from(document.querySelector('ion-list').children);
+
+    searchbar.addEventListener('ionInput', handleInput);
+
+    function handleInput(event) {
+        console.log(event + "1")
+        const query = event.target.value.toLowerCase();
+        requestAnimationFrame(() => {
+            items.forEach(item => {
+                const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
+                item.style.display = shouldShow ? 'block' : 'none';
+            });
+        });
+    }
+</script>

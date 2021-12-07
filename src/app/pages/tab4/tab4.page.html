@@ -1,10 +1,13 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title>
-            Parceiros próximos
-        </ion-title>
-    </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+    <ion-title>
+        Parceiros próximos
+    </ion-title>
+    <ion-button slot="end" class="menu-header" (click)="presentActionSheet()">
+        <ion-icon slot="icon-only" ios="ellipsis-vertical" md="ellipsis-vertical"></ion-icon>
+        <ion-badge class="bagde-icon"></ion-badge>
+    </ion-button>
+</ion-toolbar>
+
 
 <ion-content padding>
     <ion-list>

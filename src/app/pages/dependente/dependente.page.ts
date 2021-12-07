@@ -118,6 +118,7 @@ export class DependentePage implements OnInit {
 
     if (this.dependenteId) {
       try {
+        this.dependente.tipoUsuario = '5';
         await this.dependenteService.updateDependente(this.dependenteId, this.dependente);
         await this.loading.dismiss();
         console.log("update" + this.dependente)
@@ -133,12 +134,12 @@ export class DependentePage implements OnInit {
 
       try {
         //this.dependente.email = this.userEmail
-        //this.usuario.id = this.usuarioId;
+        this.dependente.tipoUsuario = '5';
         await this.dependenteService.addDependente(this.dependente);
         await this.loading.dismiss();
         console.log("salvou" + this.dependente)
         this.presentToast('Usuário salvo');
-        //this.navCtrl.navigateBack('/listclinicas');
+        this.navCtrl.navigateBack('/listdependentes');
       } catch (error) {
         console.log("não salvou " + this.dependente)
         this.presentToast('Erro ao tentar salvar');

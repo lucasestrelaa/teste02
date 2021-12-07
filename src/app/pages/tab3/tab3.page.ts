@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { ActionSheetController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { AppComponent } from 'src/app/app.component';
 import { User } from 'src/app/interfaces/user';
@@ -25,7 +25,9 @@ export class Tab3Page {
     private usuarioService: UsuarioService,
     private authService: AuthService,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    public actionSheetController: ActionSheetController,
+    private navCtrl: NavController,
   ) {
     this.loadUsuario();
   }
@@ -34,7 +36,7 @@ export class Tab3Page {
     this.usuarioId = (await this.authService.getAuth().currentUser).uid;
 
     this.email = (await this.authService.getAuth().currentUser).email;
-    console.log(this.userEmail + this.email)
+    //console.log(this.userEmail + this.email)
     this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
       for (let x = 0; x < data.length; x++) {
         if (data[x].id == this.usuarioId) {
@@ -71,6 +73,34 @@ export class Tab3Page {
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
+  }
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Menu',
+      buttons: [{
+        text: 'Logout',
+        icon: 'log-out-outline',
+        handler: () => {
+          this.authService.logout();
+          console.log('Share clicked');
+        }
+      },{
+        text: 'Perfil',
+        icon: 'person-outline',
+        handler: () => {
+          this.navCtrl.navigateRoot('/tabs/tab5');
+          console.log('/tabs/tab5');
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
 

@@ -11,7 +11,7 @@ import { UsuarioService } from './services/usuario.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  private usuarioId: string;
+  private usuarioId;
   public usuario: User = {};
   public usuarios: User = {};
   private Iduser: string;
@@ -22,31 +22,31 @@ export class AppComponent {
     private usuarioService: UsuarioService,
     private authService: AuthService,
   ) {
-    this.loadUsuario();
+    //if(this.authService.getAuth()) this.loadUsuario();
+    
   }
   async loadUsuario() {
     //this.phoneNumber = (await this.authService.getAuth().currentUser).phoneNumber;
     //this.user.phoneNumber =  (await this.authService.getAuth().currentUser).phoneNumber;
-    this.usuarioId = (await this.authService.getAuth().currentUser).uid;
-    this.email = (await this.authService.getAuth().currentUser).email;
-    //console.log(this.usuarioId + this.email);
-    this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
-      
-      for (let x = 0; x < data.length; x++) {
-        console.log(data[x].id +" - "+this.usuarioId);
-        if (data[x].id == this.usuarioId) {
-          this.usuario = data[x];
-          this.usuarios = data[x];
-          this.Iduser = data[x].id;
-          //this.pacientes = data[x];
-          console.log(this.usuarios.id+ " -+ " )
-        } else {
-          this.usuarios.email = this.email;
-          console.log(this.usuarioId + this.email);
+    
+      this.usuarioId = (await this.authService.getAuth().currentUser).uid;
+      console.log(this.usuarioId)
+      this.email = (await this.authService.getAuth().currentUser).email;
+      this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
+        for (let x = 0; x < data.length; x++) {
+          //console.log(data[x].id +" - "+this.usuarioId);
+          if (data[x].id == this.usuarioId) {
+            this.usuario = data[x];
+            this.usuarios = data[x];
+            this.Iduser = data[x].id;
+            //this.pacientes = data[x];
+            //console.log(this.usuarios.id+ " -+ " )
+          } else {
+            this.usuarios.email = this.email;
+            //console.log(this.usuarioId + this.email);
+          }
         }
-      }
-    });
-    //if (this.userId) this.loadUsuario();
+      });
+    
   }
-  
 }

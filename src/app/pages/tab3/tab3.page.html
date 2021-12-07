@@ -1,6 +1,15 @@
-<ion-buttons>
-    <ion-button [routerLink]="['/adm']" slot="end">adm</ion-button>
-    <ion-button (click)="sair()" slot="end">sair</ion-button>
+<ion-toolbar>
+    <ion-title>
+        Home
+    </ion-title>
+    <ion-button slot="end" class="menu-header" (click)="presentActionSheet()">
+        <ion-icon slot="icon-only" ios="ellipsis-vertical" md="ellipsis-vertical"></ion-icon>
+        <ion-badge class="bagde-icon"></ion-badge>
+    </ion-button>
+</ion-toolbar>
+
+<ion-buttons slot="end">
+
 </ion-buttons>
 <ion-content [fullscreen]="true">
 
@@ -12,14 +21,14 @@
 
     <ion-slides pager="true">
         <ion-slide>
-            <ion-card class="produto" style="background: url(https://firebasestorage.googleapis.com/v0/b/hoogliapp.appspot.com/o/subheader.jpeg?alt=media&token=46176d34-31f3-4434-8114-b6ab40abc54e); background-repeat: no-repeat; background-size: auto;">
+            <ion-card class="produto" style="background: url(https://firebasestorage.googleapis.com/v0/b/hoogliapp.appspot.com/o/imagens%2F1.png?alt=media&token=d14e06d3-b04b-4b7d-bb03-05f2a47a06dd); background-repeat: no-repeat; background-size: cover;">
                 <ion-card-title>
                     Conheça nossos produtos!
                 </ion-card-title>
             </ion-card>
         </ion-slide>
         <ion-slide>
-            <ion-card class="produto" style="background: url(https://firebasestorage.googleapis.com/v0/b/hoogliapp.appspot.com/o/subheader.jpeg?alt=media&token=46176d34-31f3-4434-8114-b6ab40abc54e); background-repeat: no-repeat; background-size: auto;">
+            <ion-card class="produto" style="background: url(https://firebasestorage.googleapis.com/v0/b/hoogliapp.appspot.com/o/imagens%2F2.png?alt=media&token=353920e3-b9af-43cf-8eb6-b44354b95480); background-repeat: no-repeat; background-size: cover;">
                 <ion-card-title>
                     Conheça nossos produtos!
                 </ion-card-title>
@@ -27,7 +36,7 @@
 
         </ion-slide>
         <ion-slide>
-            <ion-card class="produto" style="background: url(https://firebasestorage.googleapis.com/v0/b/hoogliapp.appspot.com/o/subheader.jpeg?alt=media&token=46176d34-31f3-4434-8114-b6ab40abc54e); background-repeat: no-repeat; background-size: auto;">
+            <ion-card class="produto" style="background: url(https://firebasestorage.googleapis.com/v0/b/hoogliapp.appspot.com/o/imagens%2F3.png?alt=media&token=7e1ed61d-4024-4e49-bbdf-2d555829d479); background-repeat: no-repeat; background-size: cover;">
                 <ion-card-title>
                     Conheça nossos produtos!
                 </ion-card-title>
@@ -35,83 +44,202 @@
         </ion-slide>
     </ion-slides>
 
+    <!-- Pacientes -->
+    <div [hidden]="usuarios.tipoUsuario != 4">
+        <ion-grid>
+            <label for="campanhas">Campanhas</label>
+            <ion-row>
+                <ion-col>
+                    <a href='/tabs/tab1'>
+                        <ion-card class="secoes">
+
+                            <ion-card-content>
+                                <ion-icon name="medkit-outline"></ion-icon>
+                                <ion-label>Consultas</ion-label>
+                            </ion-card-content>
 
 
-    <ion-grid>
-        <label for="campanhas">Campanhas</label>
-        <ion-row>
-            <ion-col>
-                <a href='/tabs/tab1'>
-                    <ion-card class="secoes">
+                        </ion-card>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <a href='/error'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="calendar-number-outline"></ion-icon>
+                                <ion-label>Histórico</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <a href='/tabs/tab4'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="people-outline"></ion-icon>
+                                <ion-label>Parceiros</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
-                        <ion-card-content>
-                            <ion-icon name="medkit-outline"></ion-icon>
-                            <ion-label>Consultas</ion-label>
-                        </ion-card-content>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <a href='/tabs/tab4'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="location-outline"></ion-icon>
+                                <ion-label>Unidades</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <a href='/tabs/tab2'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="storefront-outline"></ion-icon>
+                                <ion-label>Produtos</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <a href='/error'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="cash-outline"></ion-icon>
+                                <ion-label>Pagamentos</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </div>
+    <!-- Médicos -->
+    <div [hidden]="usuarios.tipoUsuario != 3">
+        <ion-grid>
+            <label for="campanhas">Campanhas</label>
+            <ion-row>
+                <ion-col>
+                    <a href='/tabs/listmedicoespecialidade'>
+                        <ion-card class="secoes">
+
+                            <ion-card-content>
+                                <ion-icon name="medkit-outline"></ion-icon>
+                                <ion-label>Especialidades</ion-label>
+                            </ion-card-content>
 
 
-                    </ion-card>
-                </a>
-            </ion-col>
-            <ion-col>
-                <a href='/listorgaosemissores'>
-                    <ion-card class="secoes">
-                        <ion-card-content>
-                            <ion-icon name="calendar-number-outline"></ion-icon>
-                            <ion-label>Histórico</ion-label>
-                        </ion-card-content>
-                    </ion-card>
-                </a>
-            </ion-col>
-            <ion-col>
-                <a href='/listorgaosemissores'>
-                    <ion-card class="secoes">
-                        <ion-card-content>
-                            <ion-icon name="people-outline"></ion-icon>
-                            <ion-label>Parceiros</ion-label>
-                        </ion-card-content>
-                    </ion-card>
-                </a>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+                        </ion-card>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <a href='/error'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="calendar-number-outline"></ion-icon>
+                                <ion-label>Agenda</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <a href='/error'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="people-outline"></ion-icon>
+                                <ion-label>Pacientes</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <a href='/tabs/tab4'>
-                    <ion-card class="secoes">
-                        <ion-card-content>
-                            <ion-icon name="location-outline"></ion-icon>
-                            <ion-label>Unidades</ion-label>
-                        </ion-card-content>
-                    </ion-card>
-                </a>
-            </ion-col>
-            <ion-col>
-                <a href='/listorgaosemissores'>
-                    <ion-card class="secoes">
-                        <ion-card-content>
-                            <ion-icon name="storefront-outline"></ion-icon>
-                            <ion-label>Produtos</ion-label>
-                        </ion-card-content>
-                    </ion-card>
-                </a>
-            </ion-col>
-            <ion-col>
-                <a href='/listorgaosemissores'>
-                    <ion-card class="secoes">
-                        <ion-card-content>
-                            <ion-icon name="cash-outline"></ion-icon>
-                            <ion-label>Pagamentos</ion-label>
-                        </ion-card-content>
-                    </ion-card>
-                </a>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+        <!-- <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <a href='/tabs/tab4'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="location-outline"></ion-icon>
+                                <ion-label>Unidades</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <a href='/tabs/tab2'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="storefront-outline"></ion-icon>
+                                <ion-label>Produtos</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <a href='/error'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="cash-outline"></ion-icon>
+                                <ion-label>Pagamentos</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+            </ion-row>
+        </ion-grid> -->
+
+    </div>
+    <!-- Clínica -->
+    <div [hidden]="usuarios.tipoUsuario != 2">
+        <ion-grid>
+            <label for="campanhas">Campanhas</label>
+            <ion-row>
+                <ion-col>
+                    <a href='/tabs/listmedicoespecialidade'>
+                        <ion-card class="secoes">
+
+                            <ion-card-content>
+                                <ion-icon name="medkit-outline"></ion-icon>
+                                <ion-label>Especialidades</ion-label>
+                            </ion-card-content>
 
 
+                        </ion-card>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <a href='/error'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="calendar-number-outline"></ion-icon>
+                                <ion-label>Agenda</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+                <ion-col>
+                    <a href='/error'>
+                        <ion-card class="secoes">
+                            <ion-card-content>
+                                <ion-icon name="people-outline"></ion-icon>
+                                <ion-label>Pacientes</ion-label>
+                            </ion-card-content>
+                        </ion-card>
+                    </a>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </div>
 
 
 

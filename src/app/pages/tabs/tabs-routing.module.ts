@@ -28,6 +28,14 @@ const routes: Routes = [
         loadChildren: () => import('../tab5/tab5.module').then(m => m.Tab5PageModule)
       },
       {
+        path: 'listmedicoespecialidade',
+        loadChildren: () => import('../listmedicoespecialidade/listmedicoespecialidade.module').then( m => m.ListmedicoespecialidadePageModule)
+      },
+      {
+        path: 'agenda',
+        loadChildren: () => import('../agenda/agenda.module').then(m => m.AgendaPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab3',
         pathMatch: 'full'

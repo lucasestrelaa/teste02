@@ -19,7 +19,7 @@ export class AuthService {
   ) { }
 
   login(user: User) {
-    this.afa.signInWithEmailAndPassword(user.email, user.password);
+    return this.afa.signInWithEmailAndPassword(user.email, user.password);
   }
   register(user: User) {
     return this.afa.createUserWithEmailAndPassword(user.email, user.password);
@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   getAuth() {
-    console.log(this.afa);
+    //console.log(this.afa);
     return this.afa;
 
   }

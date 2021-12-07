@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { ActionSheetController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Clinicas } from 'src/app/interfaces/clinicas';
 import { Consulta } from 'src/app/interfaces/consulta';
@@ -103,7 +103,10 @@ export class Tab1Page {
     private route: Router,
     private loadingCtrl: LoadingController,
     private consultaService: ConsultaService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    public actionSheetController: ActionSheetController,
+    //private navCtrl: NavController,
+
   ) {
     this.loadUsuario();
     this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
@@ -152,28 +155,34 @@ export class Tab1Page {
     });
     this.consultas.pop();
     this.consultaSubscription = this.consultaService.getConsultas().subscribe(data => {
-      
+      //this.consultas = data;
       this.pacientes.map((arr)=>{
         
-        console.log(arr.id)
+        //console.log(arr.id)
         for(let i = 0; i < data.length; i++){
           
-          console.log(i)
+          //console.log(i)
           if(data[i].idPaciente != null && data[i].idPaciente == arr.id){
-            //console.log(this.userId + " - "+ data[i].idPaciente)
-            //console.log(data[i])
-            if(arr.tipoUsuario == 4){
+            //console.log(this.consultas)
+            //console.log(arr.tipoUsuario)
+            if(arr.tipoUsuario == 5){
               data[i].dependente = true
             }else{
               data[i].dependente = false
             }
+            //console.log(arr.id)
             this.consultas.push(data[i]);
-            console.log(this.consultas)
+            // while(data[i].idPaciente != arr.id){
+            //   //console.log(arr.id)
+            //   this.consultas.splice(arr.id);
+            //   //console.log('removeu 1')
+            // }
+            //console.log(this.consultas)
             
             //puxar dados
             //this.getDependente(data[i].idPaciente);
-            this.getMedico(data[i].idMedico);
-            this.getClinica(data[i].idClinica);
+            // this.getMedico(data[i].idMedico);
+            // this.getClinica(data[i].idClinica);
             //console.log(this.pacientes.map((arr)=>{console.log(arr.nome)}))
           }
           
@@ -228,7 +237,7 @@ export class Tab1Page {
     //this.phoneNumber = (await this.authService.getAuth().currentUser).phoneNumber;
     //this.user.phoneNumber =  (await this.authService.getAuth().currentUser).phoneNumber;
     this.userId = (await this.authService.getAuth().currentUser).uid;
-    console.log(this.userId)
+    //console.log(this.userId)
     //this.email = (await this.authService.getAuth().currentUser).email;
     //console.log(this.userEmail + this.email)
     this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
@@ -253,7 +262,14 @@ export class Tab1Page {
 
   async deleteConsulta(id: string) {
     try {
+
       await this.consultaService.deleteConsulta(id);
+      // while(this.consultas.length > 0){
+      //   console.log(this.consultas)
+      //   this.consultas.pop();
+        
+      // }
+      location.reload();
     } catch (error) {
       this.presentToast('Erro ao tentar deletar');
     }
@@ -313,6 +329,43 @@ export class Tab1Page {
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
+  }
+  async sair() {
+    try {
+      await this.authService.logout();
+    } catch (error) {
+      console.log(error)
+    } finally {
+      //this.loading.;
+    }
+  }
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Menu',
+      buttons: [{
+        text: 'Logout',
+        icon: 'log-out-outline',
+        handler: () => {
+          this.authService.logout();
+          console.log('Share clicked');
+        }
+      },{
+        text: 'Perfil',
+        icon: 'person-outline',
+        handler: () => {
+          this.navCtrl.navigateRoot('/tabs/tab5');
+          console.log('/tabs/tab5');
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
 }

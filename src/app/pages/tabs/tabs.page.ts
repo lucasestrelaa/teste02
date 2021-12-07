@@ -26,25 +26,22 @@ export class TabsPage {
     this.loadUsuario();
   }
   async loadUsuario() {
-    //this.phoneNumber = (await this.authService.getAuth().currentUser).phoneNumber;
-    //this.user.phoneNumber =  (await this.authService.getAuth().currentUser).phoneNumber;
     this.usuarioId = (await this.authService.getAuth().currentUser).uid;
     this.email = (await this.authService.getAuth().currentUser).email;
-    //console.log(this.usuarioId + this.email);
     this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
       
       for (let x = 0; x < data.length; x++) {
-        console.log(data[x].id +" - "+this.usuarioId);
+        //console.log(data[x].id +" - "+this.usuarioId);
         if (data[x].id == this.usuarioId) {
           this.usuario = data[x];
           this.usuarios = data[x];
           this.Iduser = data[x].id;
           // this.pacientes = data[x];
 
-          console.log(this.usuarios.tipoUsuario+ " -+ " )
+          //console.log(this.usuarios.tipoUsuario+ " -+ " )
         } else {
           this.usuarios.email = this.email;
-          console.log(this.usuarioId + this.email);
+          //console.log(this.usuarioId + this.email);
         }
       }
     });

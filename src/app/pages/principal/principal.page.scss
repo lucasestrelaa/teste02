@@ -1,5 +1,5 @@
 * {
-    color: #636363;
+    //color: #636363;
 }
 
 .container {
@@ -26,7 +26,16 @@
     margin-top: 25%;
     ion-text {
         text-align: center;
-        padding: 10px;
+        padding: 15px;
+        h1 {
+            font-weight: 700;
+            font-size: 34px;
+            padding: 15px;
+        }
+        p {
+            font-size: 14px;
+            padding: 15px;
+        }
     }
 }
 

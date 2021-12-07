@@ -60,21 +60,22 @@ export class Tab5Page {
     //this.phoneNumber = (await this.authService.getAuth().currentUser).phoneNumber;
     //this.user.phoneNumber =  (await this.authService.getAuth().currentUser).phoneNumber;
     this.usuarioId = (await this.authService.getAuth().currentUser).uid;
+    console.log(this.usuarioId)
     this.email = (await this.authService.getAuth().currentUser).email;
     //console.log(this.usuarioId + this.email);
     this.usuarioSubscription = this.usuarioService.getUsuarios().subscribe(data => {
       
       for (let x = 0; x < data.length; x++) {
-        console.log(data[x].id +" - "+this.usuarioId);
+        //console.log(data[x].id +" - "+this.usuarioId);
         if (data[x].id == this.usuarioId) {
           this.usuario = data[x];
           this.usuarios = data[x];
           this.Iduser = data[x].id;
           //this.pacientes = data[x];
-          console.log(this.usuarios.id+ " -+ " )
+          //console.log(this.usuarios.id+ " -+ " )
         } else {
           this.usuarios.email = this.email;
-          console.log(this.usuarioId + this.email);
+          //console.log(this.usuarioId + this.email);
         }
       }
     });
@@ -88,13 +89,14 @@ export class Tab5Page {
 
     if (this.usuarios.id) {
       try {
+        this.usuarios.tipoUsuario = '4';
         await this.usuarioService.updateUsuario(this.usuarios.id, this.usuarios);
         await this.loading.dismiss();
-        console.log("update" + this.usuarios)
+        //console.log("update" + this.usuarios)
         this.presentToast('Usuario Atualizado');
         //this.navCtrl.navigateBack('/listclinicas');
       } catch (error) {
-        console.log("não update" + this.usuarios)
+        //console.log("não update" + this.usuarios)
         this.presentToast('Erro ao tentar salvar');
         this.loading.dismiss();
       }
@@ -103,14 +105,15 @@ export class Tab5Page {
 
       try {
         //this.usuario.email = this.userEmail
+        this.usuarios.tipoUsuario = '4';
         this.usuarios.id = this.usuarioId;
         await this.usuarioService.addUsuario(this.usuarios.id, this.usuarios);
         await this.loading.dismiss();
-        console.log("salvou" + this.usuarios)
+       // console.log("salvou" + this.usuarios)
         this.presentToast('Usuário salvo');
         //this.navCtrl.navigateBack('/listclinicas');
       } catch (error) {
-        console.log("não salvou " + this.usuarios)
+       // console.log("não salvou " + this.usuarios)
         this.presentToast('Erro ao tentar salvar');
         this.loading.dismiss();
       }

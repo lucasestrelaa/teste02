@@ -5,6 +5,10 @@
         </ion-buttons> -->
         <ion-title>Consultas</ion-title>
     </ion-toolbar>
+    <ion-button slot="end" class="menu-header" (click)="presentActionSheet()">
+        <ion-icon slot="icon-only" ios="ellipsis-vertical" md="ellipsis-vertical"></ion-icon>
+        <ion-badge class="bagde-icon"></ion-badge>
+    </ion-button>
 </ion-header>
 
 <ion-content>
@@ -41,7 +45,7 @@
                     {{ consulta.nomePaciente }}
 
                     <p>{{ medico.nome }}</p>
-                    <p>{{ clinica.nomeFantasia }}</p>
+                    <p>{{ consulta.idClinica }}</p>
 
                 </ion-label>
 

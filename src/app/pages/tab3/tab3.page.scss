@@ -4,10 +4,15 @@ ion-toolbar {
 
 * {
     color: #636363;
+    text-decoration: none;
 }
 
 main {
     background-color: #007bff2a;
+}
+
+:host {
+    --border: 0.55px solid var(--ion-tab-bar-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.056)))) !important;
 }
 
 ion-title {
@@ -15,7 +20,7 @@ ion-title {
 }
 
 ion-card {
-    box-shadow: 0 0 1em #7c7c7c;
+    box-shadow: 0 0 1em #7c7c7c42;
 }
 
 .secoes {
@@ -25,7 +30,7 @@ ion-card {
     width: 80%;
     height: auto;
     border-radius: 25px;
-    box-shadow: 0 0 1em #7c7c7c;
+    box-shadow: 0 0 1em #7c7c7c1f;
     ion-card-content {
         padding: 4px;
         margin: 8px 4px;
@@ -56,10 +61,33 @@ ion-button {
 }
 
 .produto {
-    width: auto;
+    width: 100%;
     height: 150px;
 }
 
 .user {
     padding: 10px;
+}
+
+.menu-header {
+    z-index: 1;
+    --background: transparent !important;
+    width: 16%;
+    align-self: self-end;
+}
+
+.menu-header:active,
+.menu-header:hover,
+.menu-header::after,
+.menu-header:focus,
+.menu-header:host,
+.menu-header::before {
+    z-index: 1;
+    --background: #24cba9 !important;
+    width: 16%;
+    align-self: self-end;
+}
+
+.ion-activated {
+    --background: #24cba9 !important;
 }

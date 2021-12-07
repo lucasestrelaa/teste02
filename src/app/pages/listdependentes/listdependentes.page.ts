@@ -37,7 +37,7 @@ export class ListdependentesPage implements OnInit {
     private toastCtrl: ToastController
   ) {
     this.loadUsuario();
-    this.dependentes.pop();
+    //this.dependentes.pop();
     this.dependentesSubscription = this.dependenteService.getDependentes().subscribe(data => {
       for (let i = 0; i < data.length; i++) {
         if(this.usuarioId == data[i].idtitular){
@@ -62,11 +62,18 @@ export class ListdependentesPage implements OnInit {
   }
   ngOnDestroy() {
     this.dependentesSubscription.unsubscribe();
+    console.log('destroy')
   }
 
   async deleteDependente(id: string) {
     try {
       await this.dependenteService.deleteDependente(id);
+      location.reload();
+      //this.ngOnDestroy();
+      // while(this.dependentes.length >=0 ){
+      //   this.dependentes.pop();
+      // }
+      
     } catch (error) {
       this.presentToast('Erro ao tentar deletar');
     }

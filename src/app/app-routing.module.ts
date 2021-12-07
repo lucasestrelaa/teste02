@@ -108,11 +108,27 @@ const routes: Routes = [
   },
   {
     path: 'descontos',
-    loadChildren: () => import('./pages/descontos/descontos.module').then( m => m.DescontosPageModule)
+    loadChildren: () => import('./pages/descontos/descontos.module').then( m => m.DescontosPageModule),canActivate: [AuthGuard]
   },
   {
     path: 'listdescontos',
-    loadChildren: () => import('./pages/listdescontos/listdescontos.module').then( m => m.ListdescontosPageModule)
+    loadChildren: () => import('./pages/listdescontos/listdescontos.module').then( m => m.ListdescontosPageModule),canActivate: [AuthGuard]
+  },
+  {
+    path: 'error',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  },
+  {
+    path: 'medicoespecialidade',
+    loadChildren: () => import('./pages/medicoespecialidade/medicoespecialidade.module').then( m => m.MedicoespecialidadePageModule),canActivate: [AuthGuard]
+  },
+  {
+    path: 'listmedicoespecialidade',
+    loadChildren: () => import('./pages/listmedicoespecialidade/listmedicoespecialidade.module').then( m => m.ListmedicoespecialidadePageModule),canActivate: [AuthGuard]
+  },
+  {
+    path: 'agenda',
+    loadChildren: () => import('./pages/agenda/agenda.module').then( m => m.AgendaPageModule),canActivate: [AuthGuard]
   }
   
 
