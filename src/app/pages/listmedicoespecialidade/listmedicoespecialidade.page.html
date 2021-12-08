@@ -1,8 +1,13 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>Minhas especialidades</ion-title>
-    </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+    <ion-title>Minhas especialidades</ion-title>
+
+
+    <ion-button slot="end" class="menu-header" (click)="presentActionSheet()">
+        <ion-icon slot="icon-only" ios="ellipsis-vertical" md="ellipsis-vertical"></ion-icon>
+        <ion-badge class="bagde-icon"></ion-badge>
+    </ion-button>
+</ion-toolbar>
+
 
 <ion-content>
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
@@ -34,7 +39,7 @@
 </ion-avatar>-->
 
                 <ion-label>
-                    {{ medicoespecialidade.especialidade }}
+                    {{ medicoespecialidade.nome }}
                     <p>{{ medicoespecialidade.descricao }}</p>
                 </ion-label>
 

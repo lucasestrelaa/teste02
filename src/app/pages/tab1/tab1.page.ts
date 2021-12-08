@@ -26,6 +26,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class Tab1Page {
   private loading: any;
   public consultas = new Array<Consulta>();
+  public consultas1 = new Array<Consulta>();
   public dependentesP = new Array;
   public consultasPaciente = new Array<Consulta>();
   private consultaSubscription: Subscription;
@@ -156,6 +157,7 @@ export class Tab1Page {
     this.consultas.pop();
     this.consultaSubscription = this.consultaService.getConsultas().subscribe(data => {
       //this.consultas = data;
+      console.log(data);
       this.pacientes.map((arr)=>{
         
         //console.log(arr.id)
@@ -165,13 +167,13 @@ export class Tab1Page {
           if(data[i].idPaciente != null && data[i].idPaciente == arr.id){
             //console.log(this.consultas)
             //console.log(arr.tipoUsuario)
-            if(arr.tipoUsuario == 5){
-              data[i].dependente = true
-            }else{
-              data[i].dependente = false
-            }
+            // if(arr.tipoUsuario == 5){
+            //   data[i].dependente = true
+            // }else{
+            //   data[i].dependente = false
+            // }
             //console.log(arr.id)
-            this.consultas.push(data[i]);
+            this.consultas1.push(data[i]);
             // while(data[i].idPaciente != arr.id){
             //   //console.log(arr.id)
             //   this.consultas.splice(arr.id);
@@ -205,6 +207,8 @@ export class Tab1Page {
           
         // }
       })
+      console.log(this.consultas1);
+      this.consultas = this.consultas1;
       
       //this.consultas = data;
     });
@@ -262,7 +266,7 @@ export class Tab1Page {
 
   async deleteConsulta(id: string) {
     try {
-
+      await this.presentLoading();
       await this.consultaService.deleteConsulta(id);
       // while(this.consultas.length > 0){
       //   console.log(this.consultas)

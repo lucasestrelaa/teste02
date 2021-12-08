@@ -1,15 +1,12 @@
-<ion-header>
-    <ion-toolbar>
-        <!-- <ion-buttons (click)="voltar()" slot="start">
-            <ion-icon name="arrow-back-outline"></ion-icon>
-        </ion-buttons> -->
-        <ion-title>Consultas</ion-title>
-    </ion-toolbar>
+<ion-toolbar>
+    <ion-title>
+        Consultas
+    </ion-title>
     <ion-button slot="end" class="menu-header" (click)="presentActionSheet()">
         <ion-icon slot="icon-only" ios="ellipsis-vertical" md="ellipsis-vertical"></ion-icon>
         <ion-badge class="bagde-icon"></ion-badge>
     </ion-button>
-</ion-header>
+</ion-toolbar>
 
 <ion-content>
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
@@ -49,7 +46,7 @@
 
                 </ion-label>
 
-                <ion-note color="primary" slot="end" *ngIf="consulta.dataConsulta">{{ consulta.dataConsulta }}</ion-note>
+                <ion-note color="primary" slot="end" *ngIf="consulta.dataConsulta">{{ consulta.dataConsulta}}</ion-note>
             </ion-item>
 
             <ion-item-options side="end">

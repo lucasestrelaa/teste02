@@ -1,8 +1,12 @@
-<ion-header>
-  <ion-toolbar>
+<ion-toolbar>
     <ion-title>agenda</ion-title>
-  </ion-toolbar>
-</ion-header>
+
+    <ion-button slot="end" class="menu-header" (click)="presentActionSheet()">
+        <ion-icon slot="icon-only" ios="ellipsis-vertical" md="ellipsis-vertical"></ion-icon>
+        <ion-badge class="bagde-icon"></ion-badge>
+    </ion-button>
+</ion-toolbar>
+
 
 <ion-content>
 

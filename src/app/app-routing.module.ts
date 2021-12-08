@@ -129,6 +129,14 @@ const routes: Routes = [
   {
     path: 'agenda',
     loadChildren: () => import('./pages/agenda/agenda.module').then( m => m.AgendaPageModule),canActivate: [AuthGuard]
+  },
+  {
+    path: 'especialidadeclinica',
+    loadChildren: () => import('./pages/especialidadeclinica/especialidadeclinica.module').then( m => m.EspecialidadeclinicaPageModule)
+  },
+  {
+    path: 'listespecialidadeclinica',
+    loadChildren: () => import('./pages/listespecialidadeclinica/listespecialidadeclinica.module').then( m => m.ListespecialidadeclinicaPageModule)
   }
   
 

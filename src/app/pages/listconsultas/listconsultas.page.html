@@ -42,7 +42,7 @@
                     <p>{{ consulta.idClinica }}</p>
                 </ion-label>
 
-                <ion-note color="primary" slot="end" *ngIf="consulta.dataConsulta">{{ consulta.dataConsulta }}</ion-note>
+                <ion-note color="primary" slot="end" displayFormat="MM DD YY" value="consulta.dataConsulta" *ngIf="consulta.dataConsulta"></ion-note>
             </ion-item>
 
             <ion-item-options side="end">

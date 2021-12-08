@@ -1,3 +1,31 @@
 * {
     color: #636363;
+    text-align: center;
+}
+
+ion-content {
+    padding: 10px;
+}
+
+.menu-header {
+    z-index: 1;
+    --background: transparent !important;
+    width: 16%;
+    align-self: self-end;
+}
+
+.menu-header:active,
+.menu-header:hover,
+.menu-header::after,
+.menu-header:focus,
+.menu-header:host,
+.menu-header::before {
+    z-index: 1;
+    --background: #24cba9 !important;
+    width: 16%;
+    align-self: self-end;
+}
+
+.ion-activated {
+    --background: #24cba9 !important;
 }

@@ -42,7 +42,7 @@ export class CadastroPage implements OnInit {
 
     try {
       await this.authService.login(this.userLogin);
-      this.route.navigate(['/tabs']);
+      
       //this.router.navigateByUrl('/profile');
       console.log('usuario logado!')
     } catch (error) {
@@ -60,6 +60,7 @@ export class CadastroPage implements OnInit {
     } catch (error) {
       console.error(error)
     } finally {
+      this.route.navigate(['/tabs/tab5']);
       this.loading.dismiss();
     }
   }

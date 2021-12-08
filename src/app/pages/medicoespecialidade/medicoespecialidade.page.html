@@ -1,9 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>medicoespecialidade</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons (click)="voltar()" slot="start">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-buttons>
+        <ion-title>Especialidade</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+    <ion-list>
+        <ion-item>
+            <ion-label>Especialidade</ion-label>
+            <ion-select [(ngModel)]="medicoespecialidade.idEspecialidade">
+                <ion-select-option *ngFor="let especialidade of especialidades" value="{{especialidade.id}}">{{ especialidade.nome }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <!-- <ion-item>
+          <ion-input type="text" [(ngModel)]="clinica.uf" placeholder="UF"></ion-input>
+      </ion-item> -->
+        <!-- <ion-item>
+          <ion-input type="text" [(ngModel)]="clinica.observacoes" placeholder="Observações"></ion-input>
+      </ion-item> -->
+    </ion-list>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button color="success" (click)="saveMedicoespecialidade()" expand="block">
+            Salvar Especialidade
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

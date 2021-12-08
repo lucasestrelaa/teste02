@@ -89,7 +89,7 @@ export class Tab5Page {
 
     if (this.usuarios.id) {
       try {
-        this.usuarios.tipoUsuario = '4';
+        //this.usuarios.tipoUsuario = '4';
         await this.usuarioService.updateUsuario(this.usuarios.id, this.usuarios);
         await this.loading.dismiss();
         //console.log("update" + this.usuarios)

@@ -28,12 +28,28 @@ const routes: Routes = [
         loadChildren: () => import('../tab5/tab5.module').then(m => m.Tab5PageModule)
       },
       {
+        path: 'listespecialidades',
+        loadChildren: () => import('../listespecialidades/listespecialidades.module').then( m => m.ListespecialidadesPageModule)
+      },
+      {
         path: 'listmedicoespecialidade',
         loadChildren: () => import('../listmedicoespecialidade/listmedicoespecialidade.module').then( m => m.ListmedicoespecialidadePageModule)
       },
       {
+        path: 'listespecialidadeclinica',
+        loadChildren: () => import('../listespecialidadeclinica/listespecialidadeclinica.module').then( m => m.ListespecialidadeclinicaPageModule)
+      },
+      {
         path: 'agenda',
         loadChildren: () => import('../agenda/agenda.module').then(m => m.AgendaPageModule)
+      },
+      {
+        path: 'error',
+        loadChildren: () => import('../error/error.module').then(m => m.ErrorPageModule)
+      },
+      {
+        path: 'adm',
+        loadChildren: () => import('../adm/adm.module').then(m => m.AdmPageModule)
       },
       {
         path: '',
