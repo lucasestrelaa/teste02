@@ -1,19 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActionSheetController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+import { format, parseISO } from 'date-fns';
+import { IonDatetime } from '@ionic/angular';
+
+interface DatetimeChangeEventDetail {
+  value?: string | null;
+}
+interface DatetimeCustomEvent extends CustomEvent {
+  detail: DatetimeChangeEventDetail;
+  target: HTMLIonDatetimeElement;
+}
 
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.page.html',
   styleUrls: ['./agenda.page.scss'],
 })
-export class AgendaPage implements OnInit {
 
+export class AgendaPage implements OnInit {
+  @ViewChild(IonDatetime, { static: true }) datetime: IonDatetime;
+
+  dateValue = '';
+  dateValue2 = '';
   constructor(
     private authService: AuthService,
     public actionSheetController: ActionSheetController,
     private navCtrl: NavController,
   ) { }
+
+  confirm() {
+    this.datetime.ionBlur;
+  }
+  
+  reset() {
+    this.datetime.ionCancel;
+  }
+
+  formatDate(value: string) {
+    return format(parseISO(value), 'MMM dd yyyy');
+  }
+  
 
   ngOnInit() {
   }
